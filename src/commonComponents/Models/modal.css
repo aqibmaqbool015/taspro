@@ -1,0 +1,203 @@
+label.form-control-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e1e1e;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.form-control-text-input {
+    background-color: #fafafa;
+    padding: 10px;
+    height: 55px;
+    border: none;
+    color: #9e9e9e;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    border-radius: 8px;
+    width: 100%;
+}
+.form-control-text-input-new-address::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b !important;
+}
+.form-control-text-input:focus {
+    border: none;
+    background-color: #fafafa;
+    outline: none;
+    box-shadow: none;
+}
+.form-control-text-input::placeholder {
+    color: #9e9e9e;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.btn-primary-fill-book-rounded-modal {
+    width: 250px !important;
+}
+h6.user-provider-name-modal {
+    margin: 0px;
+    padding-left: 0px;
+    color: #1b1b1b;
+    
+}
+h6.user-provider-name-modal::before {
+    display: none;
+}
+/* modal.css */
+
+.user-form-check-control .form-check-input {
+    border-color: #ff552c;
+    margin-top: 2px;
+}
+.form-check-input:checked {
+    background-color: #ff552c;
+    border-color: #ff552c;
+}
+
+.user-form-check-control .form-check-input.is-valid:checked {
+    background-color: #ff552c;
+    background-image: none;
+    border: 1px solid #ff552c;
+    padding: 3px;
+}
+.user-form-check-control .form-check-input {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.user-form-check-control .form-check-input.is-valid:focus {
+    box-shadow: rgba(0, 0, 0, 0.25rem) !important;
+}
+
+span.img-adding-content {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ff552c;
+    cursor: pointer;
+}
+span.img-adding-content img.img-fluid {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+h4.color-theme-dark-font {
+    color: #1b1b1b;
+}
+
+img.img-fluid-view-effect {
+    position: absolute;
+    right: 15px;
+    top: 52px;
+    width: 23px;
+    height: 23px;
+}
+h6.services-terms-sub-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #414141;
+    text-transform: capitalize;
+    display: list-item;
+    list-style: disc;
+}
+span.terms-privacy-alert {
+    color: #ff8f2d;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+p.services-modal-description {
+    /* font-size: 18px; */
+    /* font-weight: 300; */
+    color: #666666;
+}
+h6.services-amc-duration-title {
+    font-size: 15px;
+    font-weight: 400;
+    color: #e1e1e1;
+}
+h6.services-amc-duration-title span.amc-label-view {
+    font-weight: 600;
+    color: #666666;
+    margin: 0px 10px;
+}
+h6.services-amc-duration-success-opt {
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #267800;
+    margin: 10px 0px;
+}
+.user-form-check-control-amc .form-check-input {
+    margin-top: 15px;
+}
+
+.container-check-forms {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container-check-forms input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    background-color: transparent;
+    border: 2px solid #ff8f2d;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-check-forms:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-check-forms input:checked ~ .checkmark {
+    background-color: white;
+    border: 2px solid #ff552c;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-check-forms input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-check-forms .checkmark:after {
+    top: 1.5px;
+    left: 1.66px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ff552c;
+}

@@ -1,0 +1,2267 @@
+@media (min-width: 300px) and (max-width: 575px) {
+    .carousel-control-prev {
+        left: 0 !important;
+    }
+
+    .carousel-control-next {
+        right: 0 !important;
+    }
+
+    .order-listing-banner-home {
+        text-align: center;
+    }
+
+    span.read-more-add-context {
+        width: 70px;
+        height: 100%;
+        display: inline-block;
+    }
+
+    ul.user-cleaning-container {
+        display: block;
+        margin-top: 20px !important;
+    }
+
+    ul.user-cleaning-container li.user-cleaning-detail {
+        display: inline-block;
+        text-align: left;
+        margin: 4px 20px;
+        vertical-align: middle;
+        margin-left: 0px;
+    }
+
+    p.choose-us-paragraph {
+        max-width: 100%;
+    }
+
+    .application-choose-container {
+        padding: 1rem;
+    }
+
+    .application-packages-container {
+        padding: 1rem;
+    }
+
+    h4.heading-title-banner {
+        font-size: 16px;
+    }
+
+    h4.user-heading-title {
+        font-size: 18px;
+    }
+
+    h6.pending-approve-label-text {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        padding: 2px !important;
+    }
+
+    span.pending-approve-label {
+        padding: 5px !important;
+        width: 75px;
+    }
+
+    span.repair-ac-label-service {
+        width: 65px;
+        height: 65px;
+        display: inline-block;
+    }
+
+    ul li.repair-time-date-card p.user-power-title-repair-text {
+        font-size: 13px !important;
+    }
+
+    h6.pending-approve-label-text {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        padding: 2px !important;
+    }
+
+    .cart-amount-split-box {
+        display: block;
+    }
+
+    h4.services-modal-title-main {
+        font-size: 16px !important;
+    }
+
+    .pending-approve-label-offers {
+        font-size: 13px !important;
+    }
+
+    .pending-approve-label-offers img {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        margin-left: 4px !important;
+    }
+
+    .split-ac-username {
+        margin-left: 8px;
+    }
+
+    .admin-sidebar-redirect {
+        padding: 15px !important;
+    }
+
+    /* .modal-services-body {
+        padding: 10px !important;
+    } */
+    p.services-modal-description {
+        font-size: 11px !important;
+    }
+
+    label.form-control-label {
+        font-size: 17px;
+    }
+
+    p.check-label-paragraph {
+        font-size: 15px;
+        max-width: 70%;
+    }
+
+    .btn-primary-fill-book-border {
+        margin-top: 15px !important;
+    }
+
+    .order-confirm-detail-success {
+        display: inline-block;
+    }
+
+    p.confirm-order-alert-description {
+        max-width: 100%;
+    }
+
+    span.img-label-order {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+    }
+
+    span.user-provider-label-home {
+        margin: 20px 10px;
+    }
+
+    .view-flex-title {
+        margin: 0px 0px;
+    }
+
+    .accordion-item:first-of-type .accordion-button {
+        padding: 5px !important;
+    }
+
+    .accordion-button {
+        padding: 0px;
+    }
+
+    /* .split-ac-flex-container {
+        display: inline-block !important;
+    } */
+    .split-ac-flex-left {
+        display: inline-block !important;
+    }
+
+    .split-ac-flex-left .btn-primary-fill-book {
+        position: relative !important;
+    }
+
+    .split-ac-username {
+        margin-top: 0rem;
+    }
+
+    .user-content-card-text-view {
+        text-align: left !important;
+    }
+
+    .cart-amount-split-box {
+        display: inline-block !important;
+    }
+
+    .user-multi-services-customer .alice-carousel__stage-item {
+        padding: 0rem 0rem !important;
+        width: 100% !important;
+    }
+
+    .cart-amount-split-box-little {
+        display: block !important;
+    }
+
+    .modal-content-order-service .modal-dialog {
+        width: 95% !important;
+    }
+
+    .btn-primary-fill-book-add {
+        margin: 1rem 0rem;
+    }
+
+    .user-dflex-justify-space {
+        display: flex;
+    }
+
+    .user-text-container {
+        margin: 0.5rem 0.5rem;
+    }
+
+    span.cart-amount-split-add-button {
+        width: 100px !important;
+    }
+
+    h5.user-form-label-title {
+        font-size: 12px !important;
+    }
+
+    h5.cart-amount-split-ton {
+        font-size: 13px !important;
+    }
+
+    h6.cart-amount-split-amount {
+        font-size: 14px !important;
+    }
+
+    .repair-time-date-card {
+        width: 100% !important;
+    }
+
+    .customer-detail-content {
+        margin: 15px 0px !important;
+    }
+
+    .repair-ac-flex-left {
+        display: flex !important;
+        align-items: flex-start !important;
+    }
+
+    .repair-ac-username {
+        margin-top: 0px;
+    }
+
+    .user-booking-services-container {
+        margin-top: 2rem;
+    }
+
+    .user-account-time-container-view {
+        display: inline-block !important;
+    }
+
+    .user-booking-cart-detial {
+        display: block !important;
+    }
+
+    img.img-fluid-content-detail-item {
+        margin: 1rem 0rem;
+    }
+
+    .user-view-content-chatting {
+        display: flex !important;
+    }
+
+    h6.user-power-title-repair {
+        font-size: 16px !important;
+        margin-bottom: 0px;
+    }
+
+    span.repair-ac-label-service-chat {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .chat-message {
+        max-width: 100% !important;
+    }
+
+    .user-coupan-apply-section {
+        display: flex !important;
+    }
+
+    .user-account-refer-container {
+        margin-top: 2rem !important;
+    }
+
+    .user-account-refer-card {
+        margin: 10px 0px !important;
+    }
+
+    p.services-modal-refer-text {
+        font-size: 10px !important;
+        display: inline-block;
+        margin-right: 15px !important;
+    }
+
+    img.img-fluid-content-refer {
+        width: 25px !important;
+        height: 25px !important;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    img.img-fluid-content-share-friend {
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    ul li.user-share-platfoam-listing {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    p.user-service-name-small {
+        margin: 7px 0rem !important;
+        font-size: 11px !important;
+    }
+
+    img.img-fluid-account-wallet {
+        width: 100% !important;
+    }
+
+    .repair-time-date-wallet-rate {
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+    }
+
+    .user-provider-name-confirm {
+        font-size: 10px !important;
+        margin: 3px 5px !important;
+    }
+
+    .user-provider-name-confirms {
+        font-size: 12px !important;
+        margin: 5px 8px !important;
+    }
+
+    h6.user-provider-name-order-replace {
+        font-size: 12px !important;
+        margin: 0px !important;
+        padding-left: 0px !important;
+    }
+
+    .user-provider-name-confirm-locate-replace {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        margin-right: 2px;
+    }
+
+    .user-provider-name-confirm-locate-replace img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .user-account-join-apply {
+        padding: 10px !important;
+    }
+
+    .btn-primary-fill-book-journey {
+        width: 130px !important;
+        padding: 10px !important;
+        font-size: 15px !important;
+    }
+
+    p.account-about-description {
+        font-size: 13px !important;
+    }
+
+    p.user-contact-us-description {
+        font-size: 13px !important;
+    }
+
+    h3.blog-home-detail-heading {
+        max-width: 100%;
+    }
+
+    .btn-primary-fill-book-rounded {
+        width: 100% !important;
+    }
+
+    .btn-primary-fill-book-border {
+        width: 100% !important;
+    }
+
+    .services-card-listing {
+        margin: 10px;
+    }
+
+    h6.services-card-parargraph {
+        font-size: 10px;
+    }
+
+    /* span.user-multi-services-content {
+        left: 1.3rem;
+        top: 1rem;
+        width: 89%;
+    } */
+    p.user-content-card-text-home {
+        margin-bottom: 10px !important;
+        font-size: 13px;
+    }
+
+    span.user-multi-services-content {
+        left: 1.5rem;
+        top: 2.5rem;
+    }
+
+    span.slide-content-card-text-home {
+        margin-top: 10px;
+    }
+
+    img.user-slider-cntent-object {
+        height: 180px !important;
+    }
+
+    .user-ammount-bottom-succes {
+        font-size: 10px !important;
+        margin-right: 1px !important;
+    }
+
+    h6.choose-us-title-username {
+        font-size: 13px !important;
+        margin-bottom: 0px;
+    }
+
+    .company-user-listing-right {
+        margin-left: 5px !important;
+    }
+
+    p.choose-us-description {
+        margin-top: 4px !important;
+    }
+
+    span.user-choose-label {
+        width: 65px !important;
+    }
+
+    span.user-sharp-arrow {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+
+    h5.user-content-title-card {
+        margin-bottom: 8px !important;
+        font-size: 12px;
+    }
+
+    p.user-content-card-text-home {
+        text-align: left !important;
+    }
+
+    .user-multi-services-slides .alice-carousel__stage-item img {
+        width: 100%;
+        /* height: 100%; */
+    }
+
+    .img-fluid-handyman {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .user-multi-services-detail p.user-content-card-text {
+        text-align: left;
+        margin-bottom: 2px !important;
+    }
+
+    h6.user-content-title-card {
+        font-size: 14px !important;
+        margin-bottom: 2px !important;
+    }
+
+    span.user-content-star-rate {
+        width: 15px;
+        height: 15px;
+    }
+
+    .user-cleaning-container {
+        padding-bottom: 4px !important;
+        margin-bottom: 0rem !important;
+    }
+
+    span.user-application-download {
+        width: 50px !important;
+        height: 50px !important;
+        margin: 5px !important;
+    }
+
+    .on-demand-service-section {
+        padding: 10px !important;
+    }
+
+    .services-provider-section {
+        padding: 20px 10px !important;
+    }
+
+    .user-multi-services-slides .alice-carousel__next-btn-wrapper {
+        top: 5rem;
+    }
+
+    .user-multi-services-slides .alice-carousel__prev-btn-wrapper {
+        top: 5rem;
+    }
+
+    .user-multi-services-detail {
+        padding: 5px 10px !important;
+        padding-bottom: 0px !important;
+    }
+
+    .btn-primary-fill-book {
+        min-width: 135px !important;
+        height: 35px !important;
+    }
+
+    .btn-primary-fill-book {
+        min-width: 110px !important;
+        height: 44px !important;
+        padding: 0px !important;
+        font-size: 13px !important;
+        /* width: 100px !important; */
+    }
+
+    span.user-account-detial-contact img {
+        margin: 5px 5px !important;
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    h6.user-form-label-heading {
+        font-size: 15px !important;
+    }
+
+    .user-modal-services-item {
+        margin: 10px 3px !important;
+    }
+
+    .user-mission-values-graph-controller {
+        text-align: center !important;
+    }
+
+    p.user-content-card-text {
+        font-size: 8px !important;
+        margin-bottom: 5px !important;
+    }
+
+    span.user-content-star-rate img {
+        vertical-align: bottom !important;
+    }
+
+    .heading-title-banner-fixed {
+        font-size: 16px !important;
+    }
+
+    p.listing-card-label-paragraph {
+        font-size: 9px !important;
+    }
+
+    .btn-primary-fill-book-rounded-response {
+        min-width: 150px !important;
+        margin-bottom: 0px !important;
+        margin: 10px 1px !important;
+    }
+
+    .btn-primary-fill-book-rounded-modal {
+        width: 225px !important;
+    }
+
+    h6.user-account-detail-timer {
+        font-size: 12px !important;
+    }
+
+    h5.user-account-detail-coins {
+        font-size: 15px !important;
+    }
+
+    .listing-card-label-paragraph-screen {
+        font-size: 12px !important;
+        font-weight: 600;
+        color: #1b1b1b;
+        margin-top: 10px !important;
+    }
+
+    .account-language-controller-screen {
+        margin-bottom: 10px !important;
+    }
+
+    .card-label-paragraph-screen-top {
+        margin-top: 10px !important;
+    }
+
+    .tooltip-inner {
+        font-size: 8px;
+        padding: 5px;
+    }
+
+    .bs-tooltip-end {
+        margin-left: -7px !important;
+    }
+
+    .services-provider-section-view-link h5.user-provider-dummy {
+        padding: 0px !important;
+    }
+
+    p.user-ammount-bottom {
+        font-size: 10px !important;
+    }
+
+    .appliances-packages-column h3.heading-sub-title {
+        font-size: 12px;
+    }
+
+    .user-banner-content-slide-updated .carousel {
+        display: none;
+    }
+
+    .user-provider-name-confirm-locate {
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-right: 5px !important;
+    }
+
+    .box-cart-container span.mr-3 {
+        margin-right: 4px !important;
+    }
+
+    span.user-provider-label-home {
+        padding: 5px !important;
+        font-size: 9px !important;
+        margin: 0px 3px !important;
+        width: 38px !important;
+    }
+
+    h6.choose-banner-paragraph-order {
+        font-size: 12px !important;
+        margin: 5px 0px !important;
+    }
+
+    .contact-phone-text-view-hide {
+        display: none;
+    }
+
+    span.user-listing-card-label img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: contain;
+        vertical-align: text-top;
+        margin-top: 5px;
+    }
+
+    .user-services-bg-admin {
+        height: 58px;
+    }
+
+    span.box-cart-main-label-mark {
+        font-size: 14px !important;
+        top: -20px !important;
+        height: 42px !important;
+        width: 155px !important;
+        padding: 10px 12px;
+    }
+
+    span.choose-us-star-data {
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: bottom;
+    }
+
+    span.choose-us-star-warranty {
+        font-size: 11px !important;
+        font-weight: 400;
+        color: #c1c1c1;
+        line-height: 25px;
+    }
+
+    span.choose-us-star-data {
+        margin-right: 5px;
+    }
+
+    .bg-status-rejected {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+    }
+
+    .user-cleaning-container-carts-position {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 0.5rem !important;
+        border: 1px solid #ff552c !important;
+        border-radius: 10px !important;
+        padding: 8px !important;
+        width: 94% !important;
+        /* height: 57px !important; */
+        min-width: auto !important;
+        left: 10px;
+        position: fixed;
+        bottom: 0rem;
+        background: #fff !important;
+        z-index: 2 !important;
+    }
+
+    .bg-status-completed {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        width: 84px !important;
+    }
+
+    .user-form-label-view {
+        font-size: 12px !important;
+        width: 94px !important;
+    }
+
+    h6.user-booking-amount-title {
+        font-size: 13px !important;
+    }
+
+    .booking-user-training-body .col-4 {
+        display: flex;
+        align-items: center;
+    }
+
+    span.user-off-percent-pdf-label {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+    }
+
+    span.user-off-percent-pdf-label img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 1200px) {
+    .handyman-services-container {
+        display: block;
+        text-align: center;
+    }
+
+    .mt-listing-custom {
+        top: 0rem;
+    }
+
+    .user-mission-values-graph-controller {
+        margin-bottom: 1rem;
+    }
+
+    img.user-mission-values-line,
+    img.user-mission-line-second {
+        display: none;
+    }
+
+    .user-customer-profile-data {
+        margin-left: 0rem !important;
+    }
+
+    span.border-box-label-split {
+        position: relative !important;
+        display: inline-block !important;
+    }
+
+    span.border-box-label-split img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .border-box-transparent-customer {
+        padding: 1rem !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        border-radius: 15px !important;
+        width: 100% !important;
+        text-align: left !important;
+        position: relative !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    span.user-application-download {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .appliances-packages-column h3.heading-sub-title {
+        font-size: 16px;
+    }
+
+    h6.user-provider-name {
+        font-size: 12px !important;
+        margin: 3px 5px !important;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+    .footer-copyright-bottom {
+        display: inline-block !important;
+    }
+    .user-booking-services-container {
+        margin-top: 10px;
+    }
+
+    .home-banner-section {
+        padding: 0rem !important;
+        padding-top: 6.3rem !important;
+    }
+
+    .modal-content-order-service .modal-dialog {
+        transform: none;
+        width: 100%;
+    }
+
+    .connect-app-input-name-disc {
+        font-size: 15px !important;
+    }
+
+    .split-ac-flex-left {
+        display: inline-block;
+    }
+
+    .btn-primary-fill-book-backed {
+        min-width: 130px !important;
+    }
+
+    .user-heading-title {
+        margin-bottom: 10px !important;
+    }
+
+    .multi-services-customer-reviews {
+        margin: 5px !important;
+    }
+
+    .multi-services-customer-reviews img {
+        width: 130px !important;
+        height: auto !important;
+    }
+
+    /* h5.user-service-customers-title {
+        text-align: center;
+    } */
+    /* p.user-content-card-text {
+        text-align: center;
+    } */
+    .open-positions-card-section-screen {
+        padding-top: 7rem !important;
+    }
+
+    span.company-user-listing-label {
+        margin-right: 5px !important;
+    }
+
+    .modal-description-overflow-responsive {
+        padding: 0px !important;
+    }
+
+    h6.user-content-title-card {
+        font-size: 14px !important;
+    }
+
+    .services-modal-description-overflow-height .input-group-form-box {
+        width: 115px !important;
+        height: 32px !important;
+        margin: 0.5rem 0.5rem !important;
+    }
+
+    .services-modal-description-overflow-height h6.split-ac-title-small {
+        display: none;
+    }
+
+    h5.choose-us-title-video {
+        font-size: 14px !important;
+    }
+
+    .box-cart-container {
+        padding: 10px 10px !important;
+    }
+
+    .form-control-text-input-bank::placeholder {
+        font-size: 14px !important;
+    }
+
+    h6.user-provider-name::before {
+        left: 10px !important;
+        top: -6px !important;
+    }
+
+    .blog-desktop-admin-gap {
+        margin-top: -7rem !important;
+    }
+
+    .user-multi-services-slides-career .alice-carousel__prev-btn-item,
+    .user-multi-services-slides-career .alice-carousel__next-btn-item {
+        top: 2rem !important;
+        position: relative !important;
+    }
+
+    p.user-provider-label-description {
+        margin-bottom: 5px !important;
+        margin-top: 4px !important;
+    }
+
+    .img-fluid-content-advisors {
+        width: 120px;
+    }
+
+    .company-detail-content-empty-cart-view {
+        display: none;
+    }
+
+    .application-customers-review-container {
+        height: 100% !important;
+        background-size: cover !important;
+        padding: 20px !important;
+        border-radius: 0px !important;
+    }
+
+    .cart-amount-split-left-first-item {
+        flex: 2 !important;
+    }
+
+    .connect-app-input-name-review {
+        font-size: 18px !important;
+    }
+
+    span.account-about-highlight {
+        font-size: 12px !important;
+    }
+
+    .alice-carousel__stage-item {
+        padding: 0rem !important;
+    }
+
+    h6.heading-title-banner-faq {
+        font-size: 16px !important;
+    }
+
+    span.user-modal-services-label {
+        width: 75px !important;
+        height: 75px !important;
+    }
+
+    .labour-charges-appliances {
+        width: 100% !important;
+        padding: 5px !important;
+    }
+
+    h6.rate-card-label {
+        font-size: 16px !important;
+        width: 100% !important;
+    }
+
+    h6.user-power-title {
+        max-width: 100% !important;
+        font-size: 12px !important;
+        line-height: unset !important;
+        margin-bottom: 0px;
+    }
+
+    .company-detail-content-empty {
+        padding: 12px !important;
+    }
+
+    .box-cart-container-view {
+        display: inline-block !important;
+    }
+
+    .modal-services-body {
+        padding: 0px !important;
+    }
+
+    .container-check-forms {
+        padding-left: 10px !important;
+        padding-top: 4px;
+    }
+
+    .container-check-forms-separated .checkmark {
+        height: 18px !important;
+        width: 18px !important;
+        top: 3px !important;
+        left: -5px !important;
+    }
+
+    .checkmark {
+        height: 18px !important;
+        width: 18px !important;
+        top: 10px !important;
+    }
+
+    .container-check-forms-separated .container-check-forms .checkmark:after {
+        top: -1px !important;
+        left: -0.2px !important;
+    }
+
+    .btn-primary-fill-book-border-informs {
+        height: 30px !important;
+        margin-top: 0px !important;
+        width: 160px !important;
+    }
+
+    .btn-primary-fill-book-border-informs span.card-label-text-btn {
+        font-size: 8px !important;
+        vertical-align: super !important;
+    }
+
+    .modal-body {
+        padding: 8px;
+    }
+
+    span.img-adding-content {
+        font-size: 14px !important;
+    }
+
+    span.img-adding-content img.img-fluid {
+        width: 25px !important;
+        height: 25px !important;
+        margin-right: 5px !important;
+    }
+
+    .cart-amount-split-box {
+        display: flex !important;
+    }
+
+    .home-banner-left-content {
+        padding: 0px !important;
+    }
+
+    h6.cart-amount-split-left {
+        font-size: 12px !important;
+        margin-bottom: 0px !important;
+        /* width: 90%; */
+        flex: 4;
+    }
+
+    .box-cart-container .input-group-form-box {
+        flex: 2;
+        margin: 5px !important;
+    }
+
+    .split-ac-flex-right {
+        flex: 2;
+        text-align: center;
+    }
+
+    .user-about-mission-container {
+        display: inline-block !important;
+    }
+
+    .btn-outline-primary-increment {
+        padding: 0px 0px !important;
+        font-size: 16px !important;
+        font-weight: 600;
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .user-about-mission-box {
+        margin: 1rem !important;
+    }
+
+    .user-content-align-debit {
+        text-align: center;
+    }
+
+    h6.box-cart-succcess-label {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .modal-services-body-confirms .checkmark:after {
+        top: 1.7px !important;
+        left: 1.4px !important;
+        width: 11px !important;
+        height: 11px !important;
+        border-radius: 50% !important;
+        background: #ff552c !important;
+    }
+
+    .user-arrow-back-dashboard {
+        margin-top: 10px;
+    }
+
+    h6.services-terms-sub-title {
+        font-size: 15px !important;
+    }
+
+    .split-ac-flex-container {
+        position: relative;
+    }
+
+    .special-grid-in-view-responsive {
+        padding: 12px !important;
+    }
+
+    .special-grid-in-view-responsive ul.user-cleaning-container {
+        justify-content: space-between !important;
+        display: flex;
+    }
+
+    .user-cleaning-container-carts {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+    .services-home-banner-section {
+        padding-top: 10px !important;
+    }
+
+    .career-banner-home-content-right {
+        margin: 1.5rem 0rem;
+    }
+
+    .blogs-salary-education-card {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px !important;
+    }
+
+    h6.user-form-paragraph-timer-font {
+        line-height: 18px;
+    }
+
+    .blogs-salary-education-card-text {
+        margin-bottom: 0px !important;
+    }
+
+    span.blogs-education-label img {
+        width: 100%;
+    }
+
+    p.heading-text-repair-career {
+        display: inline-block;
+        max-width: 100% !important;
+        text-align: left !important;
+    }
+
+    .btn-primary-fill-book-border-response {
+        width: 150px !important;
+        height: 35px !important;
+        margin: 0px 5px !important;
+    }
+
+    .admin-sidebar-redirect-menubar {
+        margin: 0px !important;
+    }
+
+    .appliances-packages-column h3.heading-sub-title {
+        max-width: 100%;
+    }
+
+    .application-choose-container {
+        padding: 1rem !important;
+    }
+
+    .footer-main-section {
+        padding: 10px !important;
+    }
+
+    .user-multi-services-slides .alice-carousel__next-btn [data-area]::after {
+        width: 25px;
+        height: 25px;
+    }
+
+    ul.user-cleaning-container li.user-cleaning-detail {
+        margin: 0px 4px;
+    }
+
+    .user-provider-dummy-top-heading {
+        font-size: 13px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .user-multi-services-cleaning-dotted ul.user-cleaning-container li.user-cleaning-detail:first-child,
+    .user-multi-services-cleaning-dotted ul.user-cleaning-container li.user-cleaning-detail:nth-child(2) {
+        display: none;
+    }
+
+    .border-box-split-product {
+        min-width: 85px;
+    }
+
+    .user-multi-services-slides .alice-carousel__prev-btn [data-area]::after {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* .accordion-button::after {
+        margin-left: 10px !important;
+    } */
+    img.user-profile-label-star {
+        width: auto !important;
+    }
+
+    .user-cleaning-container-carts {
+        margin-top: 0px !important;
+    }
+
+    span.user-content-star-rate {
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    .user-content-time-estimate {
+        font-size: 10px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .user-cleaning-container li {
+        display: inline-block;
+        margin: 0px 4px;
+    }
+
+    span.split-ac-label-service {
+        display: inline-block;
+        width: 122px !important;
+        height: 100% !important;
+        /* display: block;
+        width: 100% !important; */
+    }
+
+    .split-ac-flex-left-services {
+        display: flex !important;
+        align-items: flex-start !important;
+        position: relative;
+    }
+
+    .form-control-text-input-otp-content {
+        width: 45px !important;
+        height: 42px !important;
+        border-radius: 40% !important;
+    }
+
+    span.user-date-warranty {
+        left: 2px;
+        position: absolute;
+        top: -23px;
+        font-size: 12px !important;
+    }
+
+    .split-ac-flex-left-services-overlay {
+        width: 120px !important;
+    }
+
+    .btn-primary-fill-book-fixed-overlay {
+        right: -1.2rem !important;
+        bottom: 2rem !important;
+        width: 87px !important;
+        width: 100px !important;
+        height: 35px !important;
+        padding: 0px !important;
+        border-radius: 0px !important;
+        background: #fff !important;
+        color: #ff552c !important;
+        border: none !important;
+        border-image: none !important;
+        border-radius: 16px !important;
+    }
+
+    .split-ac-flex-left .btn-primary-fill-book {
+        position: relative !important;
+        height: 30px !important;
+        width: 70% !important;
+        min-width: 70% !important;
+    }
+
+    ul li.user-listing-card-content {
+        margin: 5px 6px;
+    }
+
+    .user-multi-services-detail {
+        padding: 5px 10px !important;
+    }
+
+    .user-modal-services-item {
+        margin: 10px 3px !important;
+    }
+
+    /* span.user-listing-card-label img {
+        width: 30px !important;
+        height: 30px !important;
+    } */
+    .handyman-services-column {
+        display: inline-block;
+        margin: 6px;
+        width: 28%;
+        height: 100%;
+    }
+
+    .handyman-services-column p.handyman-title {
+        font-size: 10px;
+        max-width: 100%;
+        width: 500px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0px;
+    }
+
+    .img-fluid-handyman {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    h5.choose-us-title {
+        font-size: 16px !important;
+    }
+
+    h6.demands-services-subtite {
+        font-size: 14px !important;
+    }
+
+    p.user-content-card-text-home {
+        text-align: left !important;
+    }
+
+    .input-group-form-box {
+        width: 195px !important;
+        height: 32px !important;
+        margin: 0.5rem 0.5rem !important;
+    }
+
+    .user-packages-instrument {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .user-packages-instrument-phonic {
+        width: 100% !important;
+    }
+
+    /* span.user-application-download {
+        display: inline-block;
+        width: 137px !important;
+        height: 158px !important;
+        margin: 10px !important;
+    } */
+    p.listing-card-label-paragraph {
+        font-size: 9px !important;
+    }
+
+    .user-banner-content-slide .carousel-inner {
+        height: 200px;
+    }
+
+    img.img-fluid-same-day-content {
+        width: 50px;
+        height: 50px;
+    }
+
+    img.user-slider-cntent-object {
+        height: 200px;
+    }
+
+    .user-repair-services {
+        min-height: 80px;
+    }
+
+    img.img-fluid-user-repair-services-same {
+        width: 65px;
+        height: 65px;
+    }
+
+    .split-ac-flex-right-fixings {
+        position: absolute;
+        top: 4.8rem;
+        left: 8.5rem;
+    }
+
+    .user-title-content-main-responsive {
+        margin-top: 0rem !important;
+    }
+
+    h6.split-ac-title-small {
+        font-size: 10px !important;
+    }
+
+    span.font-weight-normal {
+        font-size: 10px !important;
+    }
+
+    p.user-off-percent {
+        font-size: 10px !important;
+        margin-bottom: 0px;
+    }
+
+    .special-grid-in-view-responsive-empty {
+        display: none;
+    }
+
+    /* span.card-label-text-btn {
+        font-size: 8px !important;
+        vertical-align: super !important;
+    } */
+    .btn-primary-content-light {
+        margin: 0rem 0rem;
+        font-size: 6px;
+        padding: 10px;
+        width: 100px;
+    }
+
+    .home-services-banner-view-top {
+        text-align: center;
+    }
+
+    span.img-label-order {
+        height: auto !important;
+    }
+
+    .confirm-detail-success-right {
+        margin: 0rem 1rem !important;
+    }
+
+    p.confirm-order-alert-description {
+        max-width: 100% !important;
+    }
+
+    .btn-primary-content-light img {
+        width: 65px;
+        height: auto;
+    }
+
+    .appliances-packages-column p.packages-description {
+        display: none;
+    }
+
+    .heading-title-banner-bottom-gap {
+        margin-top: 10px !important;
+    }
+
+    .home-banner-left-content-gap {
+        padding: 0px !important;
+    }
+
+    ul li.user-mission-values-graph {
+        display: flex !important;
+        margin: 10px 0px !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+    }
+
+    span.user-mission-values-label {
+        width: 30px !important;
+        height: auto !important;
+        display: inline-block !important;
+        position: absolute !important;
+        margin-bottom: 0px !important;
+        margin-top: 1.6rem !important;
+        left: 2rem !important;
+    }
+
+    span.user-mission-values-label img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    ul li.user-mission-values-graph .mb-5 {
+        margin-bottom: 10px !important;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+    span.user-application-download {
+        display: inline-block;
+        width: 210px !important;
+        height: 210px;
+    }
+
+    .user-packages-instrument {
+        height: 100%;
+    }
+
+    .handyman-services-column {
+        display: inline-block;
+        margin: 8px;
+        width: 200px !important;
+    }
+
+    ul li.user-listing-card-content {
+        margin: 10px 7px;
+    }
+
+    span.user-listing-card-label {
+        width: 125px;
+        height: 90px;
+    }
+
+    .user-cleaning-container-carts-position {
+        min-width: 419px !important;
+    }
+
+    /* x */
+    .btn-primary-fill-book {
+        font-size: 14px !important;
+        min-width: 103px !important;
+        padding: 5px !important;
+        height: 40px !important;
+    }
+
+    .cart-amount-split-box h6.cart-amount-split-left {
+        width: 280px;
+    }
+
+    p.listing-card-label-paragraph {
+        font-size: 10px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+    .handyman-services-column {
+        display: inline-block;
+        margin: 8px;
+        width: 150px;
+        height: 100%;
+    }
+
+    .handyman-services-column p.handyman-title {
+        font-size: 12px;
+        max-width: 100%;
+        width: 500px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .img-fluid-handyman {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 991px) {
+    h6.cart-amount-split-left {
+        max-width: 50%;
+    }
+
+    .font-weight-normal-blog-text {
+        font-size: 17px !important;
+    }
+
+    p.choose-us-description-empty {
+        display: inline-block;
+        max-width: 60%;
+        text-align: center;
+    }
+
+    .home-banner-left-content-adjust {
+        margin: 0rem 2.5rem;
+    }
+
+    .user-experience-card-main-content {
+        margin: 0rem 0.8rem;
+    }
+
+    .timeline-vertical-detail-container {
+        margin: 0rem 1rem 1rem 1rem !important;
+    }
+
+    .user-account-join-apply-margin-pin {
+        margin-top: -3rem !important;
+    }
+
+    .content-form-auth-container-account {
+        margin: 0.5rem 2.5rem;
+    }
+
+    .timeline-vertical-detail-container-coupons-content {
+        margin: 0rem 2rem !important;
+    }
+
+    .user-account-coupons-bank {
+        width: 95%;
+    }
+
+    .form-user-auth-separate-content {
+        margin: 0rem 2rem;
+    }
+
+    .service-home-section-same-day {
+        width: 60%;
+        display: inline-block;
+    }
+
+    ul.user-content-align-debit {
+        text-align: center;
+    }
+
+    h4.heading-title-banner {
+        max-width: 60%;
+    }
+
+    .heading-title-banner-serve {
+        max-width: 100% !important;
+    }
+
+    .user-account-time-container-view .btn-primary-fill-book-rounded {
+        width: 50% !important;
+        font-weight: 500 !important;
+        font-size: 14px;
+    }
+
+    img.img-fluid-mission-box {
+        width: 100%;
+        height: 400px;
+        display: inline-block;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 991px) {
+    .user-content-form-box {
+        display: flex;
+        flex-flow: column;
+    }
+
+    ul li.repair-time-date-card {
+        width: 100% !important;
+        margin: 15px 0px !important;
+    }
+
+    .content-form-left-side {
+        order: 2;
+        position: relative;
+    }
+
+    .amc-detail-booking-service {
+        margin-top: 1rem;
+    }
+
+    .view-display-vertical {
+        margin: 1rem 0rem;
+    }
+
+    .user-content-auth-section {
+        margin-top: 1.5rem;
+    }
+
+    .career-banner-home-content-right {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    span.career-banner-home-content-label {
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+    }
+
+    span.career-banner-home-content-label img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .user-experience-card-main-content {
+        margin: 1rem 0rem;
+    }
+
+    .timeline-vertical-detail-container {
+        margin: 1rem 0rem !important;
+    }
+
+    .dropdown-toogle-location-address-update {
+        white-space: normal;
+    }
+
+    .services-provider-section-view-link {
+        padding-top: 5rem !important;
+    }
+
+    h5.user-provider-dummy {
+        font-size: 10px !important;
+    }
+
+    .company-detail-content-alert {
+        margin-top: 1rem !important;
+    }
+
+    img.img-fluid-mission-box {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 1200px) {
+    .career-home-banner-section {
+        padding: 0px 20px;
+        height: 44rem;
+    }
+
+    .career-banner-home-content-right {
+        display: flex;
+        height: 100%;
+        align-items: end;
+        text-align: center;
+        justify-content: center;
+    }
+
+    span.career-banner-home-content-label {
+        display: inline-block;
+        margin-bottom: 4.9rem;
+    }
+
+    .company-detail-content-empty {
+        margin-left: 2rem;
+    }
+
+    .split-ac-flex-right {
+        margin-right: 8px;
+    }
+
+    /* .company-detail-content-alert {
+        margin-left: 2rem;
+    } */
+    .split-ac-flex-right-fixings {
+        margin-top: -25px;
+    }
+
+    .appliances-packages-column h3.heading-sub-title {
+        max-width: 54% !important;
+    }
+
+    .application-download-container {
+        height: 310px;
+    }
+
+    .application-packages-container {
+        /* height: 245px; */
+        padding: 0rem 3rem;
+    }
+
+    .application-choose-container {
+        height: 310px;
+    }
+
+    /* .footer-main-section {
+        height: 310px;
+    } */
+    .user-power-title-repair-refer {
+        font-size: 19px !important;
+        font-weight: 600 !important;
+        color: #1b1b1b !important;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+    span.user-application-download {
+        display: inline-block;
+        width: 165px !important;
+        height: 165px !important;
+        margin: 1rem 1rem;
+    }
+
+    span.user-social-links-connect {
+        width: 25px !important;
+        height: 25px !important;
+        display: inline-block !important;
+    }
+
+    span.user-listing-card-label {
+        width: 80px;
+        height: 80px;
+    }
+
+    span.user-listing-card-label img {
+        object-fit: contain;
+        width: 45px;
+        height: 45px;
+        flex: 1 1;
+        vertical-align: bottom;
+    }
+
+    p.listing-card-label-paragraph {
+        font-size: 10px;
+    }
+
+    .split-ac-username {
+        margin-left: 10px !important;
+    }
+
+    span.repair-ac-label-service {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .admin-sidebar-redirect {
+        padding: 10px 10px !important;
+    }
+
+    ul li.repair-time-date-card h6.user-power-title-repair {
+        font-size: 14px !important;
+    }
+
+    ul li.repair-time-date-card p.user-power-title-repair-text {
+        font-size: 12px !important;
+    }
+
+    p.user-content-card-text-repair {
+        font-size: 10px !important;
+    }
+
+    span.repair-ac-label-service-percent {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    span.pending-approve-label-offers {
+        padding: 2px !important;
+        font-size: 14px !important;
+    }
+
+    h6.user-power-title-repair {
+        font-size: 14px !important;
+    }
+
+    .user-cleaning-container-carts-position {
+        min-width: 373px !important;
+
+    }
+}
+
+@media (min-width: 768px) {
+    .btn-primary-fill-book-fixed {
+        border-radius: 0px !important;
+        background: #fff !important;
+        color: #ff552c !important;
+        border: none !important;
+        border-image: none !important;
+        width: 105px !important;
+        right: 2.2rem !important;
+        border-radius: 16px !important;
+        height: 35px !important;
+        padding: 5px !important;
+    }
+
+    .special-grid-in-view-responsive {
+        display: none;
+    }
+
+    .form-control-text-input-otp-content {
+        width: 80px !important;
+        height: 60px !important;
+        border-radius: 40% !important;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+    span.user-multi-services-content {
+        text-align: left;
+        left: 2rem;
+        top: 2.5rem;
+    }
+
+    img.user-slider-cntent-object {
+        height: 180px !important;
+    }
+
+    .user-multi-services-slides .alice-carousel__prev-btn-wrapper,
+    .user-multi-services-slides .alice-carousel__next-btn-wrapper {
+        top: 4.5rem;
+    }
+
+    span.user-application-download {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .appliances-packages-column h3.heading-sub-title {
+        font-size: 18px;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .cart-amount-split-box h6.cart-amount-split-left {
+        width: 340px;
+    }
+
+    span.user-listing-card-label {
+        height: 89px !important;
+    }
+
+    .user-cleaning-container-carts-position {
+        min-width: 492px !important;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 400px) {
+    span.user-listing-card-label {
+        width: 87px;
+        height: 87px;
+        display: inline-block;
+    }
+    .user-main-tab-content-top-rounded-second .btn-primary-fill-book-border {
+        padding: 0.2rem 1rem !important;
+    }
+
+    .form-control-content-text {
+        border: none;
+        width: 28px !important;
+        flex: none !important;
+        padding: 0rem 5px !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 505px) {
+    span.user-listing-card-label {
+        width: 108px;
+        height: 85px;
+    }
+
+    ul li.user-listing-card-content {
+        margin: 5px 4px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    /* .user-cleaning-container {
+        justify-content: left !important;
+    } */
+    .user-cleaning-container-carts {
+        margin-top: 0px !important;
+    }
+
+    .split-ac-flex-left .btn-primary-fill-book {
+        margin-top: 15px !important;
+    }
+
+    p.user-content-card-text {
+        font-size: 10px !important;
+        margin-bottom: 3px !important;
+    }
+
+    span.user-provider-label-home {
+        padding: 5px !important;
+        font-size: 10px !important;
+        margin: 0px 8px !important;
+        width: 54px !important;
+    }
+
+    h6.choose-banner-paragraph-order {
+        font-size: 14px !important;
+        margin: 5px 0px !important;
+    }
+
+    h6.user-provider-name-order-replace {
+        font-size: 12px !important;
+        margin: 0px !important;
+        padding-left: 0px !important;
+    }
+
+    .user-provider-name-confirm-locate-replace {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
+    .user-provider-name-confirm-locate-replace img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    span.user-navbar-logo {
+        width: 100px !important;
+    }
+
+    .user-cleaning-container-carts-position {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 0.5rem !important;
+        border: 1px solid #ff552c !important;
+        border-radius: 10px !important;
+        padding: 8px !important;
+        width: 450px !important;
+        position: fixed;
+        bottom: 0rem;
+        background: #fff !important;
+        z-index: 2 !important;
+    }
+
+    .navbar-search-content {
+        margin-top: 5px !important;
+    }
+
+    .input-group-content-container {
+        padding: 0px !important;
+    }
+
+    .form-control-input-content {
+        height: 40px !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+    span.user-location-label {
+        position: absolute !important;
+        left: 15px !important;
+        top: 6px !important;
+    }
+
+    span.user-location-label img {
+        width: 17px !important;
+        height: 17px !important;
+        object-fit: contain;
+    }
+
+    span.user-location-label-search {
+        left: 10px !important;
+        top: 9px !important;
+    }
+
+    span.user-location-label-search img {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    span.user-location-label-mic img {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    span.user-location-label-mic {
+        top: 10px !important;
+    }
+
+    .form-control-input-search::placeholder {
+        font-size: 14px !important;
+    }
+
+    .open-positions-card-section {
+        padding-top: 7.4rem !important;
+    }
+
+    h4.heading-title-banner {
+        margin-bottom: 0rem !important;
+    }
+
+    .home-banner-section {
+        padding-top: 7.4rem !important;
+    }
+
+    h6.user-power-title-repair {
+        margin-bottom: 5px !important;
+    }
+}
+
+@media (min-width: 400px) {
+    .form-control-content-text {
+        border: none;
+        width: 50px !important;
+        flex: none !important;
+        padding: 0rem 5px !important;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1400px) {
+    span.box-cart-main-label-mark {
+        font-size: 15px !important;
+    }
+
+    span.choose-us-star-warranty {
+        font-size: 12px !important;
+    }
+
+    span.choose-us-star-data {
+        width: 22px !important;
+        height: 22px !important;
+        margin-right: 7px !important;
+    }
+
+    .box-cart-container-tabs-view {
+        margin-left: 0rem !important;
+        margin-top: 2rem !important;
+    }
+
+    h4.heading-title-banner {
+        max-width: 100% !important;
+    }
+
+    h6.cart-amount-split-left {
+        font-size: 12px !important;
+    }
+
+    .input-group-form-box {
+        margin: 0px 4px;
+    }
+
+    .split-ac-flex-right {
+        margin-left: 5px;
+    }
+
+    .company-detail-content-empty {
+        padding: 15px 15px !important;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1300px) {
+    .admin-sidebar-redirect-menubar {
+        margin: 0px 0px !important;
+    }
+
+    .admin-sidebar-redirect-menubar ul.my-5 {
+        padding-left: 10px !important;
+        margin: 20px 0px !important;
+    }
+
+    .accordion-body {
+        padding: 5px 15px !important;
+    }
+
+    h6.user-booking-amount-title {
+        font-size: 11px !important;
+    }
+
+    h6.user-fome-content-link {
+        font-size: 17px !important;
+    }
+
+    .timeline-vertical-detail-container {
+        margin: 0rem 0rem 1rem 0rem !important;
+    }
+
+    .user-power-title-repair-refer {
+        font-size: 16px !important;
+    }
+
+    span.user-off-percent-pdf-label {
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+    }
+
+    span.user-off-percent-pdf-label img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    h6.user-booking-amount-title {
+        font-size: 14px !important;
+    }
+}
+
+/* @media (min-width: 1500px) {
+    .user-cleaning-container-carts-position {
+        width: 450px !important;
+    }
+} */
+
+@media (min-width: 395px) and (max-width: 767px) {
+    /* .split-ac-flex-right-fixings {
+        top: 3.7rem;
+    } */
+}
+
+@media (min-width: 401px) and (max-width: 600px){
+    .user-main-tab-content-top-rounded-second .btn-primary-fill-book-border {
+        padding: 0.2rem 1.8rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .admin-sidebar-redirect-menubar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        z-index: 1000;
+        border-radius: 0;
+        min-height: unset !important;
+        border-radius: 0px !important;
+    }
+
+    .user-home-profile-content {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .admin-sidebar-redirect-menubar ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0px !important;
+        padding: 0;
+    }
+
+    .admin-sidebar-redirect-menubar ul li {
+        flex: 1;
+        text-align: center;
+        display: block !important;
+        margin-bottom: 0px !important;
+    }
+
+    .admin-sidebar-redirect-menubar .admin-sidebar-link-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .admin-sidebar-redirect-menubar .admin-sidebar-link-title h6 {
+        font-size: 11px !important;
+        margin-top: 5px !important;
+    }
+
+    .admin-sidebar-redirect-menubar span.user-home-content-label-side {
+        margin-right: 0px !important;
+    }
+
+    span.user-home-content-label-side .img-fluid {
+        width: 18px;
+        height: 18px;
+    }
+
+    .user-booking-services-container .nav-tabs {
+        display: flex;
+        flex-wrap: initial;
+    }
+
+    .user-booking-services-container .nav-tabs .nav-link {
+        font-size: 15px !important;
+    }
+
+    .btn-primary-fill-book-border-first {
+        padding: 7px !important;
+    }
+    .user-main-tab-content-top-rounded-second {
+        margin-top: 2rem !important;
+    }
+    .user-main-tab-content-top-rounded-second .nav-tabs .nav-link {
+        padding: 0.2rem 0.3rem !important;
+    }
+
+   
+    .user-main-tab-content-top-rounded-second .btn-primary-fill-book-border {
+        padding: 0.2rem 1.8rem ;
+        height: 33px !important;
+        margin-top: 0px !important;
+        width: 100% !important;
+    }
+    .user-main-tab-content-top-rounded-second span.card-label-text-btn {
+        font-size: 12px !important;
+    }
+}
+@media (min-width: 601px) and (max-width: 767px) {
+    .user-main-tab-content-top-rounded-second .btn-primary-fill-book-border {
+        padding: 0.25rem 3rem !important;
+    }
+}
