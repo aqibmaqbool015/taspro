@@ -1,0 +1,195 @@
+.profile-image-picker {
+    position: relative;
+    display: inline-block;
+}
+
+.circle-container {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid #c7c7c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #f5f5f5;
+}
+/* span.overlay-profile-uploader {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    cursor: pointer;
+  }
+  .circle-container:hover + span.overlay-profile-uploader {
+    opacity: 1 !important;
+    
+  } */
+
+span.overlay-profile-uploader {
+    position: absolute;
+    bottom: 0.7rem;
+    right: -0.5rem;
+    width: 25px;
+    height: 25px;
+    background-color: #ff552c;
+    border-radius: 50%;
+    padding: 5px;
+}
+span.overlay-profile-uploader img {
+    vertical-align: super;
+    margin-top: 0px;
+}
+.btn-outline-theme-content {
+    width: 50px;
+    background-color: #d2d2d2;
+}
+
+.circle-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+    margin-top: 16px;
+}
+
+.circle-container .placeholder {
+    position: absolute;
+    color: transparent;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/* Hide the default file input appearance */
+input[type="file"] {
+    display: none;
+}
+
+.dr-profile-input-control {
+    border: 1.5px solid #0047ab;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+span.position-relative {
+    position: relative;
+}
+ul li.connect-app-input-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px !important;
+    padding: 10px 20px;
+    height: 3.5rem;
+    border: none !important;
+}
+.connect-app-input-left {
+    display: flex;
+}
+span.social-accounts-logo {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+}
+span.social-accounts-logo img {
+    vertical-align: -webkit-baseline-middle;
+}
+p.connect-app-input-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    line-height: 35px;
+}
+p.connects-app-click {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    color: #2e91f7;
+    cursor: pointer;
+}
+.container-checks-box-btn {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    padding: 15px 20px;
+    border-radius: 12px;
+}
+
+.container-checks-box-btn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark-content-btn-outline {
+    position: absolute;
+    top: 23px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.container-checks-box-btn:hover input ~ .checkmark-content-btn-outline {
+    background-color: #ccc;
+}
+
+.container-checks-box-btn input:checked ~ .checkmark-content-btn-outline {
+    background-color: #5c95b2;
+}
+
+.checkmark-content-btn-outline:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container-checks-box-btn input:checked ~ .checkmark-content-btn-outline:after {
+    display: block;
+}
+
+/* .container-checks-box-btn .checkmark-content-btn-outline:after {
+    left: 6.5px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+} */
+
+p.check-label-paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    color: #121212;
+    text-transform: capitalize;
+}
+h6.user-check-contact-number {
+    font-size: 26px;
+    font-weight: 400;
+    color: #121212;
+}

@@ -1,0 +1,68 @@
+.footer-main-section {
+    background-color: #1b1b1b;
+    padding: 15px 15px 0px 15px;
+}
+.footer-menu-heading-content {
+    margin: 1rem 0rem;
+}
+h6.footer-main-top-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+ul li.user-listing-footer-points {
+    display: block;
+    margin: 7px 0rem;
+}
+ul li.user-listing-footer-points p.user-listing-footer-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+ul li.user-listing-footer-social {
+    display: inline-block;
+    margin: 15px;
+    margin-left: 0px;
+}
+span.user-social-links-connect {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+}
+span.user-social-links-connect img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.footer-copyright-bottom {
+    border-top: 1px solid #E1E1E1;
+    /* padding-top: 10px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+p.paragraph-bottom-footer {
+    font-size: 16px;
+    font-weight: 400;
+    color: #E1E1E1;
+    margin-bottom: 0px;
+}
+ul li.user-listing-account-payment {
+    display: inline-block;
+    margin: 10px;
+    
+}
+ul li.user-listing-account-payment span.user-account-label {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+ul li.user-listing-account-payment span.user-account-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

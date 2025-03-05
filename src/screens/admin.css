@@ -1,0 +1,733 @@
+ul li.account-home-base-listing {
+    display: block;
+    cursor: pointer;
+}
+h6.account-edit-home-heading {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0a0f0d;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+h6.account-edit-profile-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a0f0d;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+p.account-label-profile-description {
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+}
+.account-home-profile-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 12px;
+}
+.account-home-base-container {
+    display: flex;
+    align-items: center;
+}
+
+span.repair-ac-label-service-account {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+}
+span.repair-ac-label-service-account img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.user-account-switched-btn .form-check-input {
+    --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    background-color: #d9d9d9;
+    border: none;
+    width: 42px;
+    height: 20px;
+}
+.btn-primary-rounded-account {
+    width: 100%;
+    padding: 0px;
+    height: 40px;
+    
+}
+
+.flex-rounded-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.circle-container-account {
+    background-color: transparent;
+    border: none;
+    opacity: 1;
+    width: 120px;
+    height: 120px;
+}
+.circle-container-account .placeholder {
+    opacity: 1;
+}
+.overlay-profile-uploader-account {
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    padding: 2px;
+    width: 33px !important;
+    height: 33px !important;
+    right: -0.2rem;
+}
+span.overlay-profile-uploader-account img {
+    border-radius: 0px !important;
+}
+img.cover-image-edit-logo-account {
+    width: 120px;
+    height: 120px;
+}
+
+h6.user-account-detail-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    text-transform: capitalize;
+}
+.user-account-content-profile {
+    margin: 20px 0px;
+    border-bottom: 1px solid #ff552c;
+    padding-bottom: 11px;
+}
+.btn-radio-checked-control {
+    margin-bottom: 15px;
+}
+.btn-radio-checked-control .input-group-text {
+    background-color: transparent;
+    border: none;
+    padding: 0rem;
+    padding-right: 0.75rem;
+}
+.btn-radio-checked-control .form-check-input {
+    margin-top: 0px;
+    border: 1px solid #ff552c;
+}
+.btn-radio-checked-control .form-check-input:checked {
+    background-color: #ff552c;
+    border-color: #ff552c;
+}
+.user-account-refer-container {
+    margin: 10px;
+}
+ol.user-account-refer-order {
+    padding: 0px;
+}
+ol.user-account-refer-order li.user-account-refer-order-listing {
+    display: list-item;
+    margin-bottom: 10px;
+    color: #414141;
+    font-size: 12px;
+    font-weight: 400;
+}
+.user-account-refer-card {
+    background-color: #010027;
+    padding: 15px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 10px;
+}
+.user-account-refer-wallet {
+    padding: 15px;
+    border-radius: 20px;
+    background: linear-gradient(to right, rgba(255, 85, 44, 1), rgba(254, 193, 45, 1));
+}
+h5.user-account-refer-coin {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff552c;
+    margin: 15px 0px;
+}
+span.user-account-refer-currency {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+}
+span.user-account-refer-currency img {
+    vertical-align: sub;
+}
+p.user-account-refer-coins {
+    margin: 15px 0px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #cdcdcd;
+}
+.user-account-refer-coin-blog-detail {
+    background-image: linear-gradient(to right, #ff552c 0%, #fec12d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+h4.services-modal-title-refer {
+    font-size: 26px;
+    font-weight: 500;
+    color: #000;
+}
+p.services-modal-refer-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 0px;
+    text-align: left;
+}
+.services-modal-refer-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0rem;
+}
+img.img-fluid-content-refer {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    cursor: pointer;
+}
+.font-500 {
+    font-weight: 500 !important;
+}
+.user-modal-services-item-refer {
+    margin: 1px;
+}
+img.img-fluid-content-idea-friend {
+    width: 65px;
+    height: 65px;
+    display: inline-block;
+}
+ul li.user-share-platfoam-listing {
+    display: inline-block;
+    margin: 10px 12px;
+}
+ul.user-share-platfoam-order {
+    border-top: 1px solid #c9c9c9;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+img.img-fluid-content-share-friend {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
+.user-account-time-coins {
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 4px;
+}
+h5.user-account-detail-coins {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff552c;
+    text-transform: capitalize;
+}
+.user-account-language-controller .form-control-text-input-new-address{
+    padding: 10px;
+    border: 1px solid #ff552c;
+    border-radius: 12px;
+    background-color: #fff;
+    height: 50px;
+}
+.user-account-language-controller .ReactFlagsSelect-module_selectBtn__19wW7 {
+    padding: 10px;
+    border: 1px solid #ff552c;
+    border-radius: 12px;
+    background: transparent;
+}
+.user-account-language-controller span.ReactFlagsSelect-module_selectValue__152eS {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1b1b1b;
+}
+.user-account-language-controller .ReactFlagsSelect-module_selectOptions__3LNBJ {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+ul li.user-power-wallet-listing {
+    display: block;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+span.wallet-logo-label-view {
+    width: 41px;
+    height: 41px;
+    display: inline-block;
+}
+span.wallet-logo-label-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.font-wight-400 {
+    font-weight: 400 !important;
+}
+
+.user-account-wallet-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+img.img-fluid-account-wallet {
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+}
+h5.wallet-home-banner-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #f5f5f5;
+    text-transform: capitalize;
+}
+h4.wallet-home-banner-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #f5f5f5;
+}
+.btn-primary-instant-banner {
+    background-color: #f5f5f5;
+    color: #ff552c;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+    width: 170px;
+    border-radius: 20px;
+    padding: 6px;
+}
+img.img-fluid-content-wallet-home {
+    position: absolute;
+    right: -13px;
+    bottom: -15px;
+}
+p.user-account-review-wallet {
+    font-size: 13px;
+    font-weight: 400;
+    color: #c1c1c1;
+}
+span.repair-ac-label-service-wallet {
+    width: 100px !important;
+}
+.repair-wallet-flex-container {
+    display: flex;
+    border-bottom: none;
+    padding-bottom: 0px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.repair-wallet-account-bank-container {
+    display: flex;
+    border-bottom: none;
+    padding-bottom: 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-control-text-input-bank {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b;
+    height: 50px;
+}
+
+.form-control-text-input-bank::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b;
+}
+.bank-checkmark-content-btn-outline {
+    top: 24px;
+    left: 20px;
+}
+.repair-wallet-account-left-bank {
+    margin-left: 2rem;
+}
+.container-checks-box-btn-wallet {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    height: 75px;
+}
+.bank-checkmark-content-btn-outline {
+    border: 1px solid #ff552c;
+    background-color: #fff;
+}
+.container-checks-box-btn input:checked ~ .bank-checkmark-content-btn-outline {
+    background-color: #ff552c;
+}
+.container-checks-box-btn .bank-checkmark-content-btn-outline:after {
+    display: none !important;
+}
+.user-account-coupons-bank {
+    display: flex;
+    align-items: center;
+}
+.user-account-bank-percent {
+    border: 1px solid #e1e1e1;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 7px;
+    flex: 1;
+    position: relative;
+}
+
+img.img-fluid-coupons-bank {
+    width: 74px;
+    height: 74px;
+    display: inline-block;
+}
+p.account-about-description {
+    color: #666666;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+span.account-about-highlight {
+    color: #292929;
+    font-size: 16px;
+    font-weight: 600;
+}
+h6.connect-app-input-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0px;
+}
+.container-checks-about-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    height: auto;
+}
+span.checkmark-content-btn-about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #158113;
+}
+.container-checks-box-btn input:checked ~ .checkmark-content-btn-about {
+    background-color: #158113;
+}
+/* .account-about-description-checked {
+    margin-left: 2rem;
+} */
+.user-about-mission-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.user-about-mission-box {
+    flex: 1;
+    margin: 0rem 4rem;
+}
+
+ul li.user-mission-values-graph {
+    display: inline-block;
+    margin: 10px;
+    width: 238px;
+}
+span.user-mission-values-label {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+}
+span.user-mission-values-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+h6.connect-app-input-name-graph {
+    font-size: 16px;
+    font-weight: 500;
+}
+p.connect-app-input-name-graph-text {
+    font-size: 13px;
+    font-weight: 400;
+}
+img.user-mission-values-line {
+    transform: rotate(72deg);
+    left: 8rem;
+    position: absolute;
+    top: 0rem;
+    width: 100%;
+    height: 112%;
+}
+.mt-listing-custom {
+    top: -8rem;
+}
+
+.user-mission-line-second {
+    transform: rotate(-8deg);
+    left: 9rem;
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    height: 64%;
+}
+
+.user-mission-values-graph-controller {
+    margin-bottom: 10rem;
+}
+span.line-last-icon-graph {
+    display: none;
+}
+.user-account-join-apply {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border: 1px solid #ff552c;
+    border-radius: 12px;
+}
+.btn-primary-fill-book-journey {
+    width: 170px;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 0px;
+    height: 52px;
+}
+.connect-app-input-name-disc {
+    display: list-item;
+    font-weight: 600 !important;
+    color: #414141;
+    font-size: 16px;
+}
+
+.account-about-description-height {
+    line-height: 25px;
+}
+.user-contact-us-help {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+span.user-contact-us-help-label {
+    width: 70px;
+    height: 55px;
+    display: inline-block;
+}
+span.user-contact-us-help-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.user-contact-us-profile {
+    margin: 0rem 1rem;
+}
+h6.user-contact-us-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0a0f0d;
+    margin-bottom: 5px;
+}
+p.user-contact-us-description {
+    font-size: 15px;
+    font-weight: 400;
+    color: #363636;
+    margin-bottom: 5px;
+}
+h6.user-contact-us-subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: #0a0f0d;
+}
+li.user-listing-footer-social-link {
+    margin: 15px 25px !important;
+    margin-left: 0px !important;
+}
+.user-account-faqs-controller .accordion-item {
+    border: none;
+}
+.user-account-faqs-controller .accordion-button {
+    padding: 10px 0px;
+    box-shadow: none;
+    outline: none;
+}
+.user-account-faqs-controller .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+    outline: none;
+}
+.career-home-banner-section {
+    background: linear-gradient(to right, rgba(255, 85, 44, 0.5), rgba(254, 193, 45, 0.5));
+    padding: 10px;
+}
+.career-home-banner-card {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 5.5rem;
+}
+.form-control-text-input-career {
+    margin-top: 2rem;
+}
+.career-banner-home-content-right {
+    display: flex;
+    height: 100%;
+    align-items: end;
+    text-align: center;
+    justify-content: center;
+}
+span.career-banner-home-content-label {
+    display: inline-block;
+}
+.open-positions-card-section {
+    margin-top: 7rem;
+}
+p.heading-text-repair-career {
+    display: inline-block;
+    max-width: 80%;
+    text-align: center;
+}
+.open-position-light-card {
+    background-color: #fcf2e9;
+    border-bottom: none;
+    box-shadow: none;
+    border: none;
+}
+.button-primary-transparent-career {
+    background: linear-gradient(to right, rgba(255, 85, 44, 1), rgba(254, 193, 45, 1)) !important;
+    color: #fff !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+span.set-apart-label-view {
+    background: linear-gradient(to right, rgba(255, 85, 44, 1), rgba(254, 193, 45, 1)) !important;
+    border-radius: 50%;
+    width: 41px;
+    height: 38px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px;
+    text-align: center;
+}
+.img-fluid-content-apart-set {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+}
+.blogs-salary-education-card {
+    display: flex;
+}
+.blogs-education-profile-section {
+    background-color: #f9f9f9;
+    padding: 12px;
+    flex: 1;
+}
+.blogs-education-profile-section {
+    padding: 12px 20px;
+}
+h6.blogs-education-profile-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ff552c;
+}
+.font-gradiant-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ff552c;
+    background-image: linear-gradient(to right, #ff552c 0%, #fec12d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+span.blogs-education-profile-label {
+    font-weight: 400;
+    color: #666666;
+    margin: 0rem 1rem;
+}
+ul li.listing-card-label-content-user {
+    display: inline-block;
+    margin: 0px 7px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+span.listing-card-label-user {
+    margin: 8px 7px;
+    margin-left: 0px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+span.listing-card-label-user img {
+    width: 100%;
+    height: 100%;
+    vertical-align: text-bottom;
+}
+h6.blogs-education-profile-underline {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #ff552c 0%, #fec12d 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    /* border-bottom: 1px solid #ff552c !important; */
+    color: #ff552c !important;
+    display: inline-block;
+    
+}
+
+.user-multi-services-slides-career .alice-carousel__stage-item {
+    text-align: left !important;
+}
+.user-multi-services-slides-career .alice-carousel__prev-btn-wrapper,
+.user-multi-services-slides-career .alice-carousel__next-btn-wrapper {
+    top: 8rem !important;
+}
+.blog-home-banner-section {
+    background-image: url(../assets/images/blog-banner.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 30rem;
+}
+h3.blog-home-detail-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1b1b1b;
+    text-transform: capitalize;
+    max-width: 80%;
+}
+
+
+ul li.blog-home-detail-listing {
+    display: inline-block;
+    margin: 10px 22px;
+    margin-left: 0px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1b1b1b;
+}
+span.blog-home-detail-span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+span.blog-home-detail-span img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    vertical-align: bottom;
+}
+
+img.img-fluid-content-blog-detail {
+    width: 100%;
+    
+}
