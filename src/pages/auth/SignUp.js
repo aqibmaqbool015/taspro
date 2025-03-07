@@ -64,7 +64,7 @@ function SignUp() {
                       </h4>
                       <p className="
                        services-modal-description-otp-section">
-                        Please enter your phone number to sign up.
+                        Please enter your phone number and email to sign up.
                       </p>
                       {error && (
                         <div className="alert alert-danger">{error}</div>

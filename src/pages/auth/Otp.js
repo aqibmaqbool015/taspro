@@ -137,13 +137,12 @@ import { Screens } from "../../constant/routes";
 function OtpAuth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { email , phone} = location.state || {}; // Get email from previous screen
-  const [otp, setOtp] = useState(Array(4).fill("")); // 4 OTP fields
+  const { email } = location.state || {}; 
+  const [otp, setOtp] = useState(Array(4).fill("")); 
   const [seconds, setSeconds] = useState(60);
   const [error, setError] = useState("");
   const otpInputs = useRef([]);
 
-  // Timer for countdown
   useEffect(() => {
     const timer = setInterval(() => {
       setSeconds((prevSeconds) => {
@@ -166,7 +165,7 @@ function OtpAuth() {
   };
 
   const handleInputChange = (index, value) => {
-    if (/[^0-9]/.test(value)) return; // Only allow numbers
+    if (/[^0-9]/.test(value)) return;
 
     const newOtp = [...otp];
     newOtp[index] = value;
@@ -184,19 +183,18 @@ function OtpAuth() {
       setError("Please enter a valid 4-digit OTP.");
       return;
     }
-
     try {
-      // Verify OTP with the backend API
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/verifyOTP`, {
         otp: otpString,
         email: email,
+        deviceId: process.env.REACT_APP_deviceId,
+        fcmToken:process.env.REACT_APP_fcmToken
       });
-
-      if (response.status === 200 && response.data.status === "success") {
+        if (response.data?.data?.token) {
+            localStorage.setItem("token", response.data?.data?.token); // Store token in local storage
+        }
         navigate(Screens.mySchedule); // OTP verified, navigate to next screen
-      } else {
-        setError(response.data.message || "OTP verification failed. Please try again.");
-      }
+      
     } catch (err) {
       setError("An error occurred. Please try again later.");
     }
@@ -204,15 +202,13 @@ function OtpAuth() {
 
   const handleResendOtp = async () => {
     try {
-      // Resend OTP API call
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/resendOTP`, {
         email: email,
-        phoneNumber: phone, // Add phone number if required
       });
 
       if (response.status === 200 && response.data.status === "success") {
-        setSeconds(60); // Reset the timer
-        setError(""); // Clear previous error if any
+        setSeconds(60); 
+        setError(""); 
       } else {
         setError(response.data.message || "Failed to resend OTP. Please try again.");
       }

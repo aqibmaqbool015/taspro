@@ -58,9 +58,18 @@ import OtpSignUp from "./pages/auth/OtpSignUp";
 import BookPaymentView from "./admin/BookPaymentView";
 
 function App() {
+    const token = localStorage.getItem("token"); // Get token from local storage
+
   return (
     <>
       <Routes>
+        {!token && <Route path={Screens.signUp} element={<SignUp />} />}
+          
+        <Route path={Screens.authLogin} element={<Login />} />
+        <Route path={Screens.otpLogin} element={<OtpAuth />} />
+        <Route path={Screens.otpSignup} element={<OtpSignUp />} />
+        <Route path={Screens.signUp} element={<SignUp />} />
+        
         <Route path={Screens.Home} element={<Home />} />
         <Route path={Screens.service} element={<Service />} />
         <Route path={Screens.rateCard} element={<RateCard />} />
@@ -91,10 +100,7 @@ function App() {
         />
 
         {/* Auth */}
-        <Route path={Screens.authLogin} element={<Login />} />
-        <Route path={Screens.otpLogin} element={<OtpAuth />} />
-        <Route path={Screens.otpSignup} element={<OtpSignUp />} />
-        <Route path={Screens.signUp} element={<SignUp />} />
+        
         <Route path={Screens.profileBuilding} element={<ProfileBuilding />} />
         <Route path={Screens.completeProfile} element={<CompleteProfile />} />
 

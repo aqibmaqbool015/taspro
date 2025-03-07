@@ -11,29 +11,24 @@ import axios from "axios";
 function Login() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [phone, setPhone] = useState(""); // Initialize phone state
-  const [email, setEmail] = useState(""); // Initialize email state
-  const [error, setError] = useState(""); // Initialize error state
+  const [email, setEmail] = useState(""); 
+  const [error, setError] = useState(""); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation for phone number and email
-    if (!phone || !email) {
-      setError("Please enter both email and phone number");
+    if (!email) {
+      setError("Please enter email");
       return;
     }
 
     try {
       // Submit data to the login API
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/login`, {
-        phoneNumber: phone,
         email: email,
       });
-
-        console.log("Login response", response.data);
-
-        navigate(Screens.otpLogin, { state: { userData: response.data.data, email: email, phone: phone } });
+        navigate(Screens.otpLogin, { state: { userData: response.data.data, email: email } });
       
     } catch (error) {
       setError("An error occurred. Please try again.");
@@ -70,22 +65,6 @@ function Login() {
                       </p>
                       {error && <div className="alert alert-danger">{error}</div>}
 
-                      <Form.Group
-                        className="mb-2 position-relative text-left"
-                        controlId="formBasicEmail"
-                      >
-                        <Form.Label className="form-control-label text-left">
-                          Phone Number
-                        </Form.Label>
-                        <Form.Control
-                          type="number"
-                          placeholder="+1-300-555-0399"
-                          className="form-control-text-input"
-                          value={phone} // Use the phone state here
-                          onChange={(e) => setPhone(e.target.value)} // Update phone state on change
-                          
-                        />
-                      </Form.Group>
                       <Form.Group className="mb-2 position-relative text-left" controlId="formBasicEmail">
                         <Form.Label className="form-control-label text-left">Email</Form.Label>
                         <Form.Control

@@ -31,7 +31,7 @@ function OtpSignUp() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isResendEnabled]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -68,14 +68,14 @@ function OtpSignUp() {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/verifyOTP`, {
         otp: otpString,
         email: email,
-        phoneNumber: phone
+         deviceId: process.env.REACT_APP_deviceId,
+        fcmToken:process.env.REACT_APP_fcmToken
       });
-
-      if (response.status === 200) {
+      if (response.data?.data?.token) {
+            localStorage.setItem("token", response.data?.data?.token); // Store token in local storage
+        }
         navigate(Screens.profileBuilding);
-      } else {
-        setError(response.data.message || "OTP verification failed. Please try again.");
-      }
+
     } catch (err) {
       setError("An error occurred while verifying OTP. Please try again.");
     }
@@ -84,14 +84,15 @@ function OtpSignUp() {
   const handleResendOtp = async () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/resendOTP`, {
-        email: email,  // Send the email to resend the OTP
+        email: email,  
+        phoneNumber :phone
       });
 
       if (response.status === 200) {
-        setSeconds(60); // Reset the timer to 60 seconds
-        setIsResendEnabled(false); // Disable the resend button
-        setError(""); // Clear any previous errors
-        setOtp(new Array(4).fill("")); // Clear the OTP input fields
+        setSeconds(60); 
+        setIsResendEnabled(false); 
+        setError(""); 
+        setOtp(new Array(4).fill(""));
       } else {
         setError(response.data.message || "Failed to resend OTP. Please try again.");
       }
@@ -117,10 +118,10 @@ function OtpSignUp() {
                         className="services-modal-title-main color-theme-dark-font"
                         style={{ fontWeight: "600" }}
                       >
-                        OTP Verification sent to {email}
+                        OTP Verification
                       </h4>
                       <p className="services-modal-description services-modal-description-otp-section">
-                        Please enter the OTP sent to your email.
+                        Please enter the OTP sent to your email {email}.
                       </p>
                       {error && <div className="alert alert-danger">{error}</div>}
                       <ul className="px-0 text-center">
