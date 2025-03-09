@@ -190,10 +190,11 @@ function OtpAuth() {
         deviceId: process.env.REACT_APP_deviceId,
         fcmToken:process.env.REACT_APP_fcmToken
       });
-        if (response.data?.data?.token) {
-            localStorage.setItem("token", response.data?.data?.token); // Store token in local storage
-        }
-        navigate(Screens.mySchedule); // OTP verified, navigate to next screen
+          console.log('toekn', response.data?.token);
+          
+          localStorage.setItem("token", response.data?.token);
+        
+        navigate(Screens.Home, {state : {data : response?.data?.data}}); // OTP verified, navigate to next screen
       
     } catch (err) {
       setError("An error occurred. Please try again later.");

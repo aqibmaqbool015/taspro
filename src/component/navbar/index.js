@@ -10,12 +10,14 @@ import InputGroupComponent from "../../commonComponents/InputGroup";
 import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import { otpCode } from "../../constant/dummyData";
+import axios from "axios";
 
-function NavbarComponent() {
+function NavbarComponent({data}) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [phone, setPhone] = useState("");
   const [showOtp, setShowOtp] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   const handleCloseOtp = () => setShowOtp(false);
   const handleShowOtp = () => setShowOtp(true);
@@ -41,6 +43,49 @@ function NavbarComponent() {
     return () => clearInterval(timer);
   }, []);
 
+  const handleLogout = async () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    console.warn("No token found, redirecting to home...");
+    navigate(Screens.authLogin);
+    return;
+  }
+
+  try {
+    await axios.post(
+      `${process.env.REACT_APP_BASE_URI}/api/v1/auth/logout`,
+      {
+        deviceId: process.env.REACT_APP_deviceId, // Ensure correct deviceId
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token in headers
+        },
+      }
+    );
+    localStorage.removeItem("token");
+    localStorage.clear();
+    setToken("");
+
+    navigate(Screens.authLogin);
+  } catch (error) {
+    console.error("Logout failed:", error);
+
+    // If already logged out or token invalid, clear session & redirect
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.clear();
+      setToken("");
+      navigate(Screens.Home);
+    } else {
+      alert("Logout failed. Please try again.");
+    }
+  }
+};
+
+
+  
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const remainingSeconds = time % 60;
@@ -60,6 +105,10 @@ function NavbarComponent() {
     let inputValue = e.target.value.replace(/[^a-zA-Z\s]/g, "");
     setValue(inputValue);
   };
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token") || "");
+  }, []);
 
   return (
     <Navbar expand="lg" className="bg-navbar-container">
@@ -86,7 +135,7 @@ function NavbarComponent() {
             className="contact-phone-text
           contact-phone-text-view-hide"
           >
-            7447-0000-45
+            {data?.user?.phoneNumber}
           </p>
         </div>
         <div
@@ -99,17 +148,25 @@ function NavbarComponent() {
           >
             <img src={Images.Contact} className="img-fluid" alt="Contact" />
           </span>
+
           <div>
-            <Form.Select
-              aria-label="Default select example"
-              className="form-control-input-content form-control-input-user"
-              onClick={handleShow}
+            <Button
+              className="form-control-input-content form-control-input-user text-black btn btn-link"
+              onClick={token ? handleLogout : () => navigate(Screens.authLogin)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "black",
+                fontWeight: "500",
+                textDecoration: "none",
+              }}
             >
-              <option value="1">Login</option>
-            </Form.Select>
+              {token ? "Logout" : "Login"}
+            </Button>
+      
             <span className="user-location-label-account">
               <img
-                src={Images.HeadUser}
+                src={data?.user?.avatar}
                 className="img-fluid-label-content"
                 alt="User"
               />
@@ -117,135 +174,6 @@ function NavbarComponent() {
           </div>
         </div>
       </Container>
-      <div className="modal-content-main-container">
-        <Modal
-          className="modal-content-order-service"
-          show={show}
-          onHide={handleClose}
-          size="md"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>
-            <div className="modal-services-body px-4">
-              <div className="my-4">
-                <h4 className="services-modal-title-main color-theme-dark-font">
-                  Login / Signup
-                </h4>
-                <div className="mt-4">
-                  <PhoneInput
-                    country={"us"}
-                    value={phone}
-                    onChange={(phone) => setPhone(phone)}
-                  />
-                </div>
-                <Form className="mt-4 mb-5">
-                  <div className="mb-3">
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                      <Form.Check
-                        className="user-form-check-control"
-                        type="checkbox"
-                      >
-                        <Form.Check.Input
-                          style={{ marginTop: "4px" }}
-                          type="checkbox"
-                        />
-                        <Form.Check.Label>
-                          <div className="mx-3">
-                            <p className="user-provider-label-description">
-                              Get order updated on
-                              <span className="terms-privacy-alert">
-                                {" "}
-                                WhatsApp
-                              </span>{" "}
-                            </p>
-                          </div>
-                        </Form.Check.Label>
-                      </Form.Check>
-                    </Form.Group>
-                  </div>
-
-                  <div className="text-center mt-4">
-                    <Button
-                      className="btn-primary-fill-book btn-primary-fill-book-rounded btn-primary-fill-book-rounded-modal"
-                      onClick={handleShowOtp}
-                    >
-                      Proceed
-                    </Button>
-                  </div>
-                </Form>
-              </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-        <div className="modal-content-main-container">
-          <Modal
-            className="modal-content-order-service"
-            show={showOtp}
-            onHide={handleCloseOtp}
-            size="md"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>
-              <div className="modal-services-body px-4">
-                <div className="text-center mt-2">
-                  <h4 className="services-modal-title-main color-theme-dark-font">
-                    OTP Verification!
-                  </h4>
-                  <p className="services-modal-description mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore
-                  </p>
-                </div>
-                <Form className="mt-3 mb-3">
-                  <ul className="px-0 text-center mb-0">
-                    {otpCode.map((item, index) => {
-                      return (
-                        <li className="user-form-otp-code" key={index}>
-                          <Form.Group
-                            className="mb-2"
-                            controlId={`formBasicEmail${index}`}
-                          >
-                            <Form.Control
-                              ref={(ref) => (otpInputs.current[index] = ref)}
-                              type="number"
-                              placeholder={item.place}
-                              className="form-control-text-input form-control-text-input-outline form-control-text-input-otp-content"
-                              onChange={(e) =>
-                                handleInputChange(index, e.target.value)
-                              }
-                            />
-                          </Form.Group>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className=" text-center">
-                    <h6 className="user-form-theme-timer">
-                      {/* 00:54 */}
-                      {formatTime(seconds)}
-                    </h6>
-                    <p className="user-form-paragraph-timer mt-3">Send again</p>
-                  </div>
-                  <div className="text-center mt-3">
-                    <Button
-                      className=" btn-primary-fill-book
-                    btn-primary-fill-book-rounded
-                    btn-primary-fill-book-rounded-modal"
-                      onClick={() => navigate(Screens.mySchedule)}
-                    >
-                      verify
-                    </Button>
-                  </div>
-                </Form>
-              </div>
-            </Modal.Body>
-          </Modal>
-        </div>
-      </div>
     </Navbar>
   );
 }

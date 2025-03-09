@@ -61,7 +61,7 @@ function Login() {
                         className="
                        services-modal-description-otp-section"
                       >
-                        Please enter your email or phone number to sign in.
+                        Please enter your email to sign in.
                       </p>
                       {error && <div className="alert alert-danger">{error}</div>}
 
@@ -71,9 +71,8 @@ function Login() {
                           type="email"
                           placeholder="you@example.com"
                           className="form-control-text-input"
-                          value={email} // Use the email state here
-                          onChange={(e) => setEmail(e.target.value)} // Update email state on change
-                        />
+                          value={email} 
+                          onChange={(e) => setEmail(e.target.value)} 
                       </Form.Group>
 
                       <div className="text-center mt-3">

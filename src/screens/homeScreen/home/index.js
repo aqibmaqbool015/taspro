@@ -20,13 +20,13 @@ import "../../screens.css";
 import ApplicancesModal from "../../../commonComponents/AppliancesModal";
 import { Screens } from "../../../constant/routes";
 import AdminImages from "../../../constant/adminImages";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AddressUpdateDropdown from "../../../commonComponents/AddressUpdateDropdown";
 
 function HomeScreen() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-
+  
   const handleClick = (text) => {
     if (text === "See All") {
       setShowModal(true);
