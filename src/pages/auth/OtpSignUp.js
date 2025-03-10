@@ -71,10 +71,8 @@ function OtpSignUp() {
          deviceId: process.env.REACT_APP_deviceId,
         fcmToken:process.env.REACT_APP_fcmToken
       });
-      if (response.data?.data?.token) {
-            localStorage.setItem("token", response.data?.data?.token); // Store token in local storage
-        }
-        navigate(Screens.profileBuilding);
+      localStorage.setItem("token", response.data?.token);
+        navigate(Screens.profileBuilding, { state: { user :  response?.data?.data } });
 
     } catch (err) {
       setError("An error occurred while verifying OTP. Please try again.");

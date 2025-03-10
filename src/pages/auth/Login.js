@@ -72,7 +72,7 @@ function Login() {
                           placeholder="you@example.com"
                           className="form-control-text-input"
                           value={email} 
-                          onChange={(e) => setEmail(e.target.value)} 
+                          onChange={(e) => setEmail(e.target.value)}  />
                       </Form.Group>
 
                       <div className="text-center mt-3">

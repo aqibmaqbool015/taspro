@@ -135,7 +135,7 @@ function NavbarComponent({data}) {
             className="contact-phone-text
           contact-phone-text-view-hide"
           >
-            {data?.user?.phoneNumber}
+            {data?.user?.phoneNumber || data?.updatedUser?.phoneNumber}
           </p>
         </div>
         <div
