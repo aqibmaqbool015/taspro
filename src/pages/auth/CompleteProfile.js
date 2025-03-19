@@ -9,9 +9,9 @@ import { Screens } from "../../constant/routes";
 function CompleteProfile() {
   const navigate = useNavigate();
   const location = useLocation();
-const { formData, user } = location.state || {};
+const { formData, user, avatar } = location.state || {};
 
-console.log('useruser', formData, user);
+console.log('useruser', formData, user, avatar);
 
   const [profileData, setProfileData] = useState({
     ...formData,
@@ -30,7 +30,8 @@ console.log('profileData', profileData);
       lastName: profileData.lastName,
       gender: profileData.gender,
       address: { address: profileData.address },
-      user: user?.user?._id, // Passed from props
+      user: user?.user?._id, 
+      avatar: avatar ? avatar : null,
     };
 
     try {
@@ -39,7 +40,7 @@ console.log('profileData', profileData);
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      });
+      });      
       navigate(Screens.Home, {state : {data : response?.data?.data}});
     } catch (error) {
       console.error("Error submitting profile:", error);

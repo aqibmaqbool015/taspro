@@ -13,16 +13,21 @@ function ProfileBuilding() {
     firstName: "",
     lastName: "",
   });
+  const [avatar, setAvatar] = useState(null);
   const location = useLocation();
   const { user } = location.state || {};
-  console.log('user', user);
-  
+  console.log('user', user,avatar);
+  const handleImageChanged = (selectedImage) => {
+  const imageUrl = URL.createObjectURL(selectedImage); // This creates an object URL
+
+  setAvatar(imageUrl);  // This URL will be used to display the image and can be sent to the backend
+};
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleContinue = () => {
-    navigate(Screens.completeProfile, { state: { formData, user } });
+    navigate(Screens.completeProfile, { state: { formData, user, avatar } });
   };
 
   return (
@@ -46,7 +51,7 @@ function ProfileBuilding() {
 
                     <div className="text-center mb-4">
                       {imagePickerProfile.map((item, index) => (
-                        <ImagePicker key={index} {...item} />
+                        <ImagePicker key={index} {...item} imageChanged={handleImageChanged} />
                       ))}
                     </div>
 

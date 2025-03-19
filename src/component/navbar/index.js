@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import { Container, Form, Modal } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { Screens } from "../../constant/routes";
 import Images from "../../constant/images";
@@ -18,7 +18,9 @@ function NavbarComponent({data}) {
   const [phone, setPhone] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-
+  const loc = useLocation()
+  const { dataa } = loc.state || {}
+  const [allData, setAllData] = useState(dataa || data)
   const handleCloseOtp = () => setShowOtp(false);
   const handleShowOtp = () => setShowOtp(true);
 
@@ -27,6 +29,7 @@ function NavbarComponent({data}) {
   const otpInputs = useRef([]);
   const [seconds, setSeconds] = useState(60);
   const [selectedDate, setSelectedDate] = useState(null);
+console.log('data', allData);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -116,7 +119,7 @@ function NavbarComponent({data}) {
         <Navbar.Brand>
           <span
             className="user-navbar-logo"
-            onClick={() => navigate(Screens.Home)}
+            onClick={() => navigate(Screens.Home, { state: { dataa: data } })}
           >
             <img src={Images.Logo} alt="Logo" />
           </span>
@@ -135,7 +138,7 @@ function NavbarComponent({data}) {
             className="contact-phone-text
           contact-phone-text-view-hide"
           >
-            {data?.user?.phoneNumber || data?.updatedUser?.phoneNumber}
+            {allData?.user?.phoneNumber || allData?.updatedUser?.phoneNumber}
           </p>
         </div>
         <div
@@ -166,7 +169,7 @@ function NavbarComponent({data}) {
       
             <span className="user-location-label-account">
               <img
-                src={data?.user?.avatar}
+                src={allData?.user?.avatar || allData?.updatedUser?.avatar}
                 className="img-fluid-label-content"
                 alt="User"
               />
