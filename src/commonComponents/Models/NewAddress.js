@@ -1,192 +1,244 @@
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Images from "../../constant/images";
-import { Link, NavLink } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+
+const BASE_URL = process.env.REACT_APP_BASE_URI;
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+const mapContainerStyle = {
+  width: "100%",
+  height: "300px",
+};
+
+const defaultCenter = {
+  lat: 28.6139,
+  lng: 77.209,
+};
 
 function NewAddressModal(props) {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [contact, setContact] = useState("");
-  const [contactA, setContactA] = useState("");
+  const [form, setForm] = useState({
+    fullName: "",
+    contactNumber: "",
+    alternateContactNumber: "",
+    postalCode: "",
+    city: "",
+    state: "",
+    houseNumber: "",
+    streetAddress: "",
+    landmark: "",
+    address: "",
+    type: "Home",
+    location: {
+      type: "Point",
+      coordinates: [0.0, 0.0],
+    },
+  });
+  const [showMap, setShowMap] = useState(false);
+  const [marker, setMarker] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleMapClick = (e) => {
+    const coords = {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    };
+    setMarker(coords);
+    setForm((prev) => ({
+      ...prev,
+      location: {
+        ...prev.location,
+        coordinates: [coords.lng, coords.lat], // GeoJSON order: [lng, lat]
+      },
+    }));
+    setShowMap(false);
+  };
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const url = props.addressId
+        ? `${BASE_URL}/api/v1/address/${props.addressId}`
+        : `${BASE_URL}/api/v1/address`;
+
+      const method = props.addressId ? "patch" : "post";
+
+      const res = await axios[method](url, form, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      return res.data;
+    },
+    onSuccess: () => props.onContinue(),
+    onError: (error) => {
+      console.error("Address submission failed:", error.response?.data?.message || error.message);
+    },
+  });
 
   const handleContinue = () => {
-    props.onContinue();
+    mutation.mutate();
   };
+
+  useEffect(() => {
+    if (props.addressId) {
+      refetch();
+    }
+  }, [props.addressId]);
+
+  const { isLoading: isFetching, refetch } = useQuery({
+    queryKey: ["get-address", props.addressId],
+    enabled: false,
+    queryFn: async () => {
+      const { data } = await axios.get(`${BASE_URL}/api/v1/address/${props.addressId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setForm(data.data);
+      return data.data;
+    },
+  });
+
 
   return (
     <div className="modal-content-main-container">
-      <Modal
-        className="modal-content-order-service"
-        {...props}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+      <Modal className="modal-content-order-service" {...props} size="md" centered>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="modal-services-body px-2">
             <div className="text-center">
-              <h4 className="services-modal-title-main color-theme-dark-font">
-                Add New Address
-              </h4>
+              <h4 className="services-modal-title-main color-theme-dark-font">Add New Address</h4>
               <p className="services-modal-description-uptodate">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore
+                Please enter your address details below.
               </p>
             </div>
-            <Form
-              className="mt-2 mb-2
-            services-modal-description-overflow-height"
-            >
-              <Form.Group className="mb-2" controlId="formBasicEmail">
-                <Form.Label className="form-control-label">
-                  Full Name <span className="red-alert-require">*</span>
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder=" Full Name"
-                  className="form-control-text-input
-                form-control-text-input-new-address"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+            <Form className="mt-2 mb-2 services-modal-description-overflow-height">
+              <Form.Group className="mb-2">
+                <Form.Label>Full Name *</Form.Label>
+                <Form.Control name="fullName" value={form.fullName} onChange={handleChange} />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label className="form-control-label">
-                  Contact Number <span className="red-alert-require">*</span>
-                </Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Contact Number"
-                  className="form-control-text-input
-                form-control-text-input-new-address"
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                />
+              <Form.Group className="mb-2">
+                <Form.Label>Contact Number *</Form.Label>
+                <Form.Control name="contactNumber" type="number" value={form.contactNumber} onChange={handleChange} />
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label className="form-control-label">
-                  Alternate Contact Number{" "}
-                  <span className="red-alert-require">*</span>
-                </Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Alternate Contact Number"
-                  className="form-control-text-input
-                form-control-text-input-new-address"
-                  value={contactA}
-                  onChange={(e) => setContactA(e.target.value)}
-                />
+
+              <Form.Group className="mb-2">
+                <Form.Label>Alternate Contact Number *</Form.Label>
+                <Form.Control name="alternateContactNumber" type="number" value={form.alternateContactNumber} onChange={handleChange} />
               </Form.Group>
-              <Row className="mb-1">
-                <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                  <Form.Group className="mb-1" controlId="formGridEmail">
-                    <Form.Label className="form-control-label">
-                      Postal Code <span className="red-alert-require">*</span>
-                    </Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder="Postal Code"
-                      className="form-control-text-input
-                    form-control-text-input-new-address"
-                    />
+
+              <Row>
+                <Col>
+                  <Form.Group className="mb-2">
+                    <Form.Label>Postal Code *</Form.Label>
+                    <Form.Control name="postalCode" type="text" value={form.postalCode} onChange={handleChange} />
                   </Form.Group>
                 </Col>
-                <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                  <Form.Group
-                    className="mb-3 position-relative"
-                    controlId="formGridPassword"
-                  >
-                    <Form.Label className="form-control-label">
-                      Use my Location
-                    </Form.Label>
-
-                    <Link to={"https://www.google.com/maps"} target="_blank"
-                    style={{textDecoration: "none"}}>
-                      <Form.Control
-                        type="text"
-                        placeholder="Location"
-                        className="form-control-text-input
-                    form-control-text-input-new-address"
-                      />
-                    </Link>
+                <Col>
+                  <Form.Group className="mb-2">
+                    <Form.Label>Use My Location</Form.Label>
+                    <Form.Control
+                      placeholder="Click to pick location"
+                      value={
+                        form.location.coordinates[0] !== 0
+                          ? `Lat: ${form.location.coordinates[1]}, Lng: ${form.location.coordinates[0]}`
+                          : ""
+                      }
+                      readOnly
+                      onClick={() => setShowMap(true)}
+                    />
                     <img
                       src={Images.Location}
                       className="img-fluid-view-effect"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowMap(true)}
                     />
                   </Form.Group>
                 </Col>
               </Row>
-              <Row className="mb-2">
-                <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                  <Form.Group className="mb-2" controlId="formGridEmail">
-                    <Form.Label className="form-control-label">
-                      State
-                    </Form.Label>
-                    <Form.Select
-                      aria-label="Default select example"
-                      className="form-control-text-input
-                    form-control-text-input-new-address"
+
+              {showMap && (
+                <div className="mb-3">
+                  <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+                    <GoogleMap
+                      mapContainerStyle={mapContainerStyle}
+                      center={marker || defaultCenter}
+                      zoom={marker ? 14 : 10}
+                      onClick={handleMapClick}
                     >
-                      <option>State</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </Form.Select>
+                      {marker && <Marker position={marker} />}
+                    </GoogleMap>
+                  </LoadScript>
+                  <div className="text-center mt-2">
+                    <Button size="sm" variant="secondary" onClick={() => setShowMap(false)}>
+                      Cancel
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              <Row>
+                <Col>
+                  <Form.Group className="mb-2">
+                    <Form.Label>State</Form.Label>
+                    <Form.Control name="state" value={form.state} onChange={handleChange} />
                   </Form.Group>
                 </Col>
-                <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                  <Form.Group className="mb-2" controlId="formGridPassword">
-                    <Form.Label className="form-control-label">City</Form.Label>
-                    <Form.Select
-                      aria-label="Default select example"
-                      className="form-control-text-input
-                    form-control-text-input-new-address"
-                    >
-                      <option>City</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </Form.Select>
+                <Col>
+                  <Form.Group className="mb-2">
+                    <Form.Label>City *</Form.Label>
+                    <Form.Control name="city" value={form.city} onChange={handleChange} />
                   </Form.Group>
                 </Col>
               </Row>
-              <Form.Group className="mb-2" controlId="formGridEmail">
-                <Form.Label className="form-control-label">
-                  House No <span className="red-alert-require">*</span>
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="House No"
-                  className="form-control-text-input
-                form-control-text-input-new-address"
-                />
+
+              <Form.Group className="mb-2">
+                <Form.Label>House No *</Form.Label>
+                <Form.Control name="houseNumber" value={form.houseNumber} onChange={handleChange} />
               </Form.Group>
 
-              <Form.Group className="mb-1" controlId="formGridPassword">
-                <Form.Label className="form-control-label">
-                  Road Name/Area Name{" "}
-                  <span className="red-alert-require">*</span>
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Road Name/Area Name"
-                  className="form-control-text-input
-                form-control-text-input-new-address"
-                />
+              <Form.Group className="mb-2">
+                <Form.Label>Road Name / Area *</Form.Label>
+                <Form.Control name="streetAddress" value={form.streetAddress} onChange={handleChange} />
+              </Form.Group>
+
+              <Form.Group className="mb-2">
+                <Form.Label>Landmark</Form.Label>
+                <Form.Control name="landmark" value={form.landmark} onChange={handleChange} />
+              </Form.Group>
+
+              <Form.Group className="mb-2">
+                <Form.Label>Complete Address *</Form.Label>
+                <Form.Control name="address" as="textarea" rows={2} value={form.address} onChange={handleChange} />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Address Type</Form.Label>
+                <Form.Select name="type" value={form.type} onChange={handleChange}>
+                  <option value="Home">Home</option>
+                  <option value="Office">Office</option>
+                  <option value="Work">Work</option>
+                </Form.Select>
               </Form.Group>
 
               <div className="text-center mt-4">
                 <Button
-                  className="btn-primary-fill-book btn-primary-fill-book-rounded "
+                  className="btn-primary-fill-book btn-primary-fill-book-rounded"
                   style={{ boxShadow: "none", width: "220px" }}
                   onClick={handleContinue}
+                  disabled={mutation.isLoading}
                 >
-                  Continue
+                  {mutation.isLoading ? "Saving..." : "Continue"}
                 </Button>
               </div>
             </Form>

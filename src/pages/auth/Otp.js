@@ -9,26 +9,28 @@ import { Screens } from "../../constant/routes";
 function OtpAuth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { email } = location.state || {}; 
-  const [otp, setOtp] = useState(Array(4).fill("")); 
+  const { email } = location.state || {};
+  const [otp, setOtp] = useState(Array(4).fill(""));
   const [seconds, setSeconds] = useState(60);
   const [error, setError] = useState("");
   const otpInputs = useRef([]);
 
   useEffect(() => {
+    if (seconds === 0) return;
+
     const timer = setInterval(() => {
       setSeconds((prevSeconds) => {
-        if (prevSeconds === 0) {
+        if (prevSeconds <= 1) {
           clearInterval(timer);
           return 0;
-        } else {
-          return prevSeconds - 1;
         }
+        return prevSeconds - 1;
       });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [seconds]);
+
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -60,12 +62,12 @@ function OtpAuth() {
         otp: otpString,
         email: email,
         deviceId: process.env.REACT_APP_deviceId,
-        fcmToken:process.env.REACT_APP_fcmToken
-      });          
-          localStorage.setItem("token", response.data?.token);
-        
-        navigate(Screens.Home, {state : {data : response?.data?.data}}); // OTP verified, navigate to next screen
-      
+        fcmToken: process.env.REACT_APP_fcmToken
+      });
+      localStorage.setItem("token", response.data?.token);
+      localStorage.setItem("userId", response.data?.data?.user?._id);
+      navigate(Screens.Home, { state: { userData: response?.data?.data } });
+
     } catch (err) {
       setError("An error occurred. Please try again later.");
     }
@@ -76,13 +78,8 @@ function OtpAuth() {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/resendOTP`, {
         email: email,
       });
-
-      if (response.status === 200 && response.data.status === "success") {
-        setSeconds(60); 
-        setError(""); 
-      } else {
-        setError(response.data.message || "Failed to resend OTP. Please try again.");
-      }
+      setSeconds(60);
+      setError("");
     } catch (err) {
       setError("An error occurred while resending the OTP. Please try again.");
     }

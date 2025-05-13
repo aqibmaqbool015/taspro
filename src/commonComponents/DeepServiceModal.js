@@ -19,6 +19,8 @@ import { FrequentlyCarousel } from "./FrequentlyCarousel";
 import { Screens } from "../constant/routes";
 
 function DeepServiceModal(props) {
+  const { data } = props;
+
   const navigate = useNavigate();
   let [num, setNum] = useState(0);
   let incNum = () => {
@@ -37,6 +39,7 @@ function DeepServiceModal(props) {
   const handleClicks = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <div className="modal-content-main-container">
       <Modal
@@ -54,7 +57,7 @@ function DeepServiceModal(props) {
           >
             <video style={{ height: 280, width: "100%" }} controls>
               <source
-                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                src={data?.video}
                 type="video/mp4"
               ></source>
             </video>
@@ -68,14 +71,14 @@ function DeepServiceModal(props) {
             cart-amount-split-box-service-deep mb-1"
                 >
                   <h5 className="choose-us-title-video">
-                    Deep Clean AC Service
+                    {data?.name}
                     <br />
                     (Split)
                   </h5>
                   <div className="split-ac-flex-right">
                     <h6 className="split-ac-title-small">
-                      ₹499.00
-                      <span className="font-weight-normal">₹599</span>
+                      ₹{data?.price}
+                      {/* <span className="font-weight-normal">₹599</span> */}
                     </h6>
                   </div>
                   <div
@@ -114,13 +117,13 @@ function DeepServiceModal(props) {
                   <span className="user-content-star-rate">
                     <img src={Images.Star} className="img-fluid" />
                   </span>
-                  4.83 (1.2M reviews) | . 45 mins approx
+                  4.83 (1.2M reviews) | {data?.time} {data?.timeUnit}
                 </p>
                 <p
                   className="user-ammount-bottom-succes
             text-capitalize"
                 >
-                  30 Days Warranty
+                  {data?.warranty} {data?.warrantyUnit} Warranty
                 </p>
                 <div
                   className="box-cart-content-container
@@ -134,7 +137,7 @@ function DeepServiceModal(props) {
                       className="choose-us-title-coupans
                     "
                     >
-                      Standard Rate Card no hidden chardes
+                      Standard Rate Card no hidden charges
                     </h6>
                   </div>
                   <div className="cart-box-right">
@@ -142,19 +145,19 @@ function DeepServiceModal(props) {
                   </div>
                 </div>
                 <h5 className="choose-us-title-video mt-4">How it Works?</h5>
-                {workFlow.map((item, index) => {
+                {data?.howItWorks?.map((item, index) => {
                   return (
                     <>
                       <div className="cart-amount-split-box mb-1 mt-3 justify-left">
                         <span className="cart-amount-split-label">
-                          <img src={item.image} className="img-fluid" />
+                          <img src={item.image} className="img-fluid" alt='image' />
                         </span>
                         <div className="split-ac-flex-right">
                           <p className="contact-phone-text ">
                             <span className="text-bold-label-content">
-                              {item.boldText}
+                              {item.heading}
                             </span>
-                            {item.text}
+                            {item.content}
                           </p>
                         </div>
                       </div>
@@ -162,28 +165,44 @@ function DeepServiceModal(props) {
                   );
                 })}
                 <div className="service-content-box-modal">
-                  {textDetailService.map((item, index) => {
-                    return (
-                      <>
-                        <h5 className="choose-us-title-video mt-2 mb-0">
-                          {item.title}
-                        </h5>
-                        <p className="services-modal-description">
-                          {item.text}
-                        </p>
-                      </>
-                    );
-                  })}
+
+                  <h5 className="choose-us-title-video mt-2 mb-0">
+                    Service Inclusion
+                  </h5>
+                  <p className="services-modal-description">
+                    {data?.serviceInclusion}
+                  </p>
+
                 </div>
-                <div
+                <div className="service-content-box-modal">
+
+                  <h5 className="choose-us-title-video mt-2 mb-0">
+                    Service Exclusion
+                  </h5>
+                  <p className="services-modal-description">
+                    {data?.serviceExclusion}
+                  </p>
+
+                </div>
+                <div className="service-content-box-modal">
+
+                  <h5 className="choose-us-title-video mt-2 mb-0">
+                    Important Note
+                  </h5>
+                  <p className="services-modal-description">
+                    {data?.importantNote}
+                  </p>
+
+                </div>
+                {data?.additionalServices?.length > 0 && <div
                   className="mt-4 user-multi-services-slides user-multi-services-cleaning
               user-multi-services-slides-modal"
                 >
                   <h6 className="user-heading-title mb-2">
                     Frequently Added Together
                   </h6>
-                  <FrequentlyCarousel />
-                </div>
+                  <FrequentlyCarousel additionalServices={data?.additionalServices} mainServiceId={data?._id} />
+                </div>}
               </Container>
             </div>
           </div>
@@ -195,7 +214,8 @@ function DeepServiceModal(props) {
                 </span>
                 <div className="split-ac-flex-right">
                   <h6 className="split-ac-title-small">
-                    ₹299 <span className="font-weight-normal"> ₹350 </span>
+                    ₹ {data?.price}
+                    {/* <span className="font-weight-normal"> ₹350 </span> */}
                   </h6>
                   <p className="contact-phone-text split-ac-title-small-little">
                     12 Month Plan

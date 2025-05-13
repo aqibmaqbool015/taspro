@@ -22,19 +22,22 @@ import { Screens } from "../../../constant/routes";
 import AdminImages from "../../../constant/adminImages";
 import { useLocation, useNavigate } from "react-router-dom";
 import AddressUpdateDropdown from "../../../commonComponents/AddressUpdateDropdown";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategories } from "../../../services/api";
+import CategoryModal from "./allCategoryModal";
+import SubcategoryCarousel from "./allCategoryModal/SubcategoryCarousel";
 
 function HomeScreen() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  
-  const handleClick = (text) => {
-    if (text === "See All") {
-      setShowModal(true);
-    } else {
-      // Navigate to the next screen, modify the path according to your route
-      navigate(Screens.service);
-    }
+
+  const handleClick = (subcategory, id) => {
+    navigate(`/service/${id}`, { state: { subcategory: subcategory } });
   };
+  const { data: categories, isLoading, error } = useQuery({
+    queryKey: ['categories'],
+    queryFn: fetchCategories,
+  });
 
   const handleClose = () => setShowModal(false);
   const [modalShow, setModalShow] = React.useState(false);
@@ -52,25 +55,29 @@ function HomeScreen() {
                 heading-title-banner-serve">
                   How can we serve you today?
                 </h4>
-                <ul className="mt-2 px-0 order-listing-banner-home mb-0">
-                  {homeCards.map((item, index) => {
-                    return (
-                      <li
-                        className={item.className}
-                        onClick={() => setModalShow(true)}
-                      >
-                        <span className={item.spanClass}>
-                          <img src={item.icon} className="img-fluid" />
-                        </span>
-                        <p className="mt-2 listing-card-label-paragraph">
-                          {item.title}
-                          <br />
-                          {item.title2}
-                        </p>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <div
+                  className="mt-2 px-0 order-listing-banner-home mb-0 d-flex flex-wrap"
+                  style={{ gap: '16px' }} // Optional spacing between items
+                >
+                  {categories?.slice(0, 6)?.map((item, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setModalShow(true)}
+                      style={{
+                        flex: '0 0 calc(33.333% - 16px)', // 3 per row with 16px gap
+                        marginBottom: '16px',
+                        cursor: 'pointer'
+                      }}
+                      className={item.className}
+                    >
+                      <span className={item.spanClass}>
+                        <img src={item.icon} className="img-fluid" />
+                      </span>
+                      <p className="mt-2 listing-card-label-paragraph">{item.name}</p>
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </Col>
             <Col lg={{ span: 7 }}>
@@ -104,141 +111,15 @@ function HomeScreen() {
               </Row>
             </div>
           </div>
-          <Row>
-            <Col lg={{ span: 12 }}>
-              <div
-                className="mt-2 user-multi-services-slides
-              user-multi-services-slides-alerts"
-              >
-                <h4 className="user-heading-title mb-2">AMC Service Plan</h4>
-                <Gallery />
-              </div>
-            </Col>
-          </Row>
           <div className="mt-1 user-multi-services-slides">
-            <Row>
-              <h4 className="user-heading-title mb-2">
-                Appliances Repair & Service
-              </h4>
-              {repairService.map((item, index) => {
-                return (
-                  <Col
-                    lg={{ span: 2 }}
-                    md={{ span: 3 }}
-                    sm={{ span: 4 }}
-                    xs={{ span: 4 }}
-                  >
-                    <div
-                      className=""
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleClick(item.text)}
-                    >
-                      <div className="user-repair-services">
-                        <img src={item.image} className={item.classImage} />
-                      </div>
-                      <h6 className="services-card-parargraph mb-3">
-                        {item.text}
-                      </h6>
-                    </div>
-                  </Col>
-                );
-              })}
-              <ApplicancesModal show={showModal} onHide={handleClose} />
-              {/* <Modal show={showModal} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>All Services</Modal.Title>
-                </Modal.Header>
-                <Modal.Body></Modal.Body>
-                <Modal.Footer>
-                  <button onClick={handleClose}>Close</button>
-                </Modal.Footer>
-              </Modal> */}
-            </Row>
-            <Row>
-              <Col lg={{ span: 12 }}>
-                <div
-                  className="mt-2 user-multi-services-slides
-                user-multi-services-cleaning-first"
-                >
-                  <h4 className="user-heading-title mb-2">
-                    Deep Cleaning Services
-                  </h4>
-                  <CleaningCarousel />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={{ span: 12 }}>
-                <div
-                  className="mt-1 user-multi-services-slides
-                user-multi-services-slides-alerts"
-                >
-                  <h4 className="user-heading-title mb-2">Cleaning Package</h4>
-                  <Gallery />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={{ span: 12 }}>
-                <div className="mt-0 user-multi-services-slides">
-                  <h4 className="user-heading-title mb-1">Handyman Services</h4>
-
-                  <div className="mt-1 handyman-services-container">
-                    {handymanContent.map((item, index) => {
-                      return (
-                        <>
-                          <div className="handyman-services-column">
-                            <div className="user-services-bg-admin">
-                            <img
-                              src={item.image}
-                              className="img-fluid-handyman"
-                            />
-                              </div>
-                            <div className="text-center">
-                              <p className="handyman-title text-center">
-                                {item.text}
-                              </p>
-                            </div>
-                          </div>
-                        </>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Col>
-              {/* {handymanContent.map((item, index) => {
-                return (
-                  <>
-                    <Col
-                      lg={{ span: 2 }}
-                      md={{ span: 3 }}
-                      sm={{ span: 6 }}
-                      xs={{ span: 6 }}
-                    >
-                      <div className="handyman-services-column">
-                        <img src={item.image} className="img-fluid-handyman" />
-                        <div className="text-center">
-                          <p className="handyman-title text-center">
-                            {item.text}
-                          </p>
-                        </div>
-                      </div>
-                    </Col>
-                  </>
-                );
-              })} */}
-            </Row>
-            <Row>
-              <Col lg={{ span: 12 }}>
-                <div
-                  className="mt-2 user-multi-services-slides
-                user-multi-services-cleaning-dotted"
-                >
-                  <h4 className="user-heading-title mb-2">Major Services</h4>
-                  <ServicesCarouselComponent />
-                </div>
-              </Col>
-            </Row>
+            {Array.isArray(categories) && categories.length > 0 && (
+              categories?.map((category, index) => (
+                <Row key={category._id || index}>
+                  <h4 className="user-heading-title mb-2">{category.name}</h4>
+                  <SubcategoryCarousel category={category} onCardClick={handleClick} />
+                </Row>
+              ))
+            )}
           </div>
         </Container>
       </section>
@@ -258,7 +139,6 @@ function HomeScreen() {
                             className="btn-primary-content-light"
                             onClick={() => setModalShow(true)}
                           >
-                            {/* {item.button} */}
                             <img
                               src={AdminImages.BookNow}
                               className="img-fluid"
@@ -410,11 +290,8 @@ function HomeScreen() {
           <AddressUpdateDropdown />
         </Container>
       </section>
-      <ApplicancesModal
-        link={Screens.serviceCart}
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <CategoryModal show={modalShow} onHide={() => setModalShow(false)} categories={categories} />
+
     </>
   );
 }

@@ -37,3 +37,14 @@
     transform: rotate(360deg);
   }
 }
+
+
+.stripe-card-element {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+
+

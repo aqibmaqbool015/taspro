@@ -9,43 +9,49 @@ import { Screens } from "../../constant/routes";
 function CompleteProfile() {
   const navigate = useNavigate();
   const location = useLocation();
-const { formData, user, avatar } = location.state || {};
+  const { formData, user, avatar } = location.state || {};
 
-console.log('useruser', formData, user, avatar);
+  console.log('useruser', formData, user, avatar);
 
   const [profileData, setProfileData] = useState({
     ...formData,
     gender: "",
     address: "",
   });
-console.log('profileData', profileData);
+  console.log('profileData', profileData);
 
   const handleChange = (e) => {
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async () => {
-    const payload = {
-      firstName: profileData.firstName,
-      lastName: profileData.lastName,
-      gender: profileData.gender,
-      address: { address: profileData.address },
-      user: user?.user?._id, 
-      avatar: avatar ? avatar : null,
-    };
+    const formData = new FormData();
+    formData.append("firstName", profileData.firstName);
+    formData.append("lastName", profileData.lastName);
+    formData.append("gender", profileData.gender);
+    formData.append("address", profileData.address);
+
+    if (avatar instanceof File) {
+      formData.append("avatar", avatar); // ✅ this will be uploaded to Cloudinary
+    }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/users/completeProfile`, payload, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });      
-      navigate(Screens.Home, {state : {data : response?.data?.data}});
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URI}/api/v1/users/completeProfile`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      navigate(Screens.Home, { state: { data: response?.data?.data } });
     } catch (error) {
       console.error("Error submitting profile:", error);
     }
   };
+
 
   return (
     <section className="user-content-auth-section text-center">

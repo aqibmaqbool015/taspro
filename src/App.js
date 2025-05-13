@@ -70,78 +70,78 @@ function App() {
     <>
       <Routes>
         <Route path={Screens.signUp} element={<SignUp />} />
-          
+
         <Route path={Screens.authLogin} element={<Login />} />
         <Route path={Screens.otpLogin} element={<OtpAuth />} />
         <Route path={Screens.otpSignup} element={<OtpSignUp />} />
         <Route path={Screens.signUp} element={<SignUp />} />
-        
-        <Route path={Screens.Home}  element={<ProtectedRoute element={<Home />} />} />
-        <Route path={Screens.service}  element={<ProtectedRoute element={<Service />} />}/>
-        <Route path={Screens.rateCard}   element={<ProtectedRoute element={<RateCard />} />}/>
-        <Route path={Screens.serviceCart}   element={<ProtectedRoute element={<ServiceCart />} />}/>
-        <Route path={Screens.cartPage}   element={<ProtectedRoute element={<CartPage />} />}/>
-        <Route path={Screens.paymentOption}  element={<ProtectedRoute element={<PaymentOption />} />}/>
-        <Route path={Screens.cartDetail}  element={<ProtectedRoute element={<CartDetail />} />}/>
-        <Route path={Screens.orderConfirm}   element={<ProtectedRoute element={<OrderConfirmation />} />}/>
+
+        <Route path={Screens.Home} element={<ProtectedRoute element={<Home />} />} />
+        <Route path='/service/:id' element={<ProtectedRoute element={<Service />} />} />
+        <Route path={Screens.rateCard} element={<ProtectedRoute element={<RateCard />} />} />
+        <Route path={Screens.serviceCart} element={<ProtectedRoute element={<ServiceCart />} />} />
+        <Route path={Screens.cartPage} element={<ProtectedRoute element={<CartPage />} />} />
+        <Route path="/order-payment/:id" element={<ProtectedRoute element={<PaymentOption />} />} />
+        <Route path='/payment-detail/:id' element={<ProtectedRoute element={<CartDetail />} />} />
+        <Route path={Screens.orderConfirm} element={<ProtectedRoute element={<OrderConfirmation />} />} />
 
         {/* service */}
 
-        <Route path={Screens.amcService}  element={<ProtectedRoute element={<ServiceHome />} />}/>
-        <Route path={Screens.amchomeservice}  element={<ProtectedRoute element={<ServiceServices />} />}/>
-        <Route path={Screens.amcrateCard}  element={<ProtectedRoute element={<ServiceRateCard />} />} />
+        <Route path={Screens.amcService} element={<ProtectedRoute element={<ServiceHome />} />} />
+        <Route path={Screens.amchomeservice} element={<ProtectedRoute element={<ServiceServices />} />} />
+        <Route path={Screens.amcrateCard} element={<ProtectedRoute element={<ServiceRateCard />} />} />
         <Route
           path={Screens.amcserviceCart} element={<ProtectedRoute element={<ServiceCartServices />} />}
         />
-        <Route path={Screens.amccartPage}   element={<ProtectedRoute element={<ServiceCartPage />} />}/>
+        <Route path={Screens.amccartPage} element={<ProtectedRoute element={<ServiceCartPage />} />} />
         <Route
-          path={Screens.amcpaymentOption}  element={<ProtectedRoute element={<ServicePaymentOption />} />}
+          path={Screens.amcpaymentOption} element={<ProtectedRoute element={<ServicePaymentOption />} />}
         />
-        <Route path={Screens.amccartDetail}  element={<ProtectedRoute element={<ServiceCartDetail />} />}/>
+        <Route path={Screens.amccartDetail} element={<ProtectedRoute element={<ServiceCartDetail />} />} />
         <Route
           path={Screens.amcorderConfirm}
-           element={<ProtectedRoute element={<ServiceOrderConfirmation />} />}
+          element={<ProtectedRoute element={<ServiceOrderConfirmation />} />}
         />
 
         {/* Auth */}
-        
-        <Route path={Screens.profileBuilding}   element={<ProtectedRoute element={<ProfileBuilding />} />}/>
-        <Route path={Screens.completeProfile}  element={<ProtectedRoute element={<CompleteProfile />} />}/>
+
+        <Route path={Screens.profileBuilding} element={<ProtectedRoute element={<ProfileBuilding />} />} />
+        <Route path={Screens.completeProfile} element={<ProtectedRoute element={<CompleteProfile />} />} />
 
         {/* Admin */}
-        <Route path={Screens.mySchedule} element={<ProtectedRoute element={<MySchedule />} />}/>
-        <Route path={Screens.myScheduleCard}  element={<ProtectedRoute element={<ScheduleHomeCard />} />}/>
-        <Route path={Screens.scheduleDetail}  element={<ProtectedRoute element={<ScheduleDetail />} />}/>
-        <Route path={Screens.bookingService}  element={<ProtectedRoute element={<BookingService />} />}/>
+        <Route path={Screens.mySchedule} element={<ProtectedRoute element={<MySchedule />} />} />
+        <Route path={Screens.myScheduleCard} element={<ProtectedRoute element={<ScheduleHomeCard />} />} />
+        <Route path={Screens.scheduleDetail} element={<ProtectedRoute element={<ScheduleDetail />} />} />
+        <Route path={Screens.bookingService} element={<ProtectedRoute element={<BookingService />} />} />
         <Route
           path={Screens.bookingServiceDetail}
-           element={<ProtectedRoute element={<BookingServiceTab />} />}
+          element={<ProtectedRoute element={<BookingServiceTab />} />}
         />
-        <Route path={Screens.bookingAmcDetail} element={<ProtectedRoute element={<BookingAmcDetail />} />}/>
-        <Route path={Screens.chatAdmin}   element={<ProtectedRoute element={<ChatAdmin />} />}/>
-        <Route path={Screens.bookPayment}  element={<ProtectedRoute element={<BookPaymentSummary />} />}/>
-        <Route path={Screens.bookPaymentView}   element={<ProtectedRoute element={<BookPaymentView />} />}/>
-        <Route path={Screens.bookPaymentDetail}  element={<ProtectedRoute element={<BookPaymentDetail />} />} />
-        <Route path={Screens.bookOrderCancel}  element={<ProtectedRoute element={<BookOrderCancel />} />}/>
-        <Route path={Screens.accountHome}  element={<ProtectedRoute element={<AccountHome />} />}/>
-        <Route path={Screens.accountEdit}  element={<ProtectedRoute element={<AccountEdit />} />}/>
-        <Route path={Screens.accountrefer}   element={<ProtectedRoute element={<AccountReferHelp />} />}/>
-        <Route path={Screens.accountLanguage}  element={<ProtectedRoute element={<AccountLanguage />} />}/>
-        <Route path={Screens.accountWallet}   element={<ProtectedRoute element={<AccountWallet />} />}/>
-        <Route path={Screens.accountRatingReviews}   element={<ProtectedRoute element={<AccountWRatingReviews />} />}/>
-        <Route path={Screens.accountBank}  element={<ProtectedRoute element={<AccountBank />} />} />
-        <Route path={Screens.newBank}   element={<ProtectedRoute element={<NewBank />} />}/>
-        <Route path={Screens.accountBankRemove}   element={<ProtectedRoute element={<AccountRemoveBank />} />}/>
-        <Route path={Screens.accountCoupans}   element={<ProtectedRoute element={<AccountCoupans />} />}/>
-        <Route path={Screens.aboutUs}  element={<ProtectedRoute element={<AboutUs />} />}/>
-        <Route path={Screens.termsOfUse}  element={<ProtectedRoute element={<TermsOfUse />} />}/>
-        <Route path={Screens.privacyPolicy}  element={<ProtectedRoute element={<Privacy />} />}/>
-        <Route path={Screens.cancelRefund}   element={<ProtectedRoute element={<CancellationRefund />} />} />
-        <Route path={Screens.contactUs}   element={<ProtectedRoute element={<ContactUs />} />}/>
-        <Route path={Screens.faqs}   element={<ProtectedRoute element={<Faqs />} />}/>
-        <Route path={Screens.career}  element={<ProtectedRoute element={<Careers />} />}/>
-        <Route path={Screens.blogs}  element={<ProtectedRoute element={<Blogs />} />}/>
-        <Route path={Screens.blogDetail}  element={<ProtectedRoute element={<BlogDetail />} />}/>
+        <Route path={Screens.bookingAmcDetail} element={<ProtectedRoute element={<BookingAmcDetail />} />} />
+        <Route path={Screens.chatAdmin} element={<ProtectedRoute element={<ChatAdmin />} />} />
+        <Route path={Screens.bookPayment} element={<ProtectedRoute element={<BookPaymentSummary />} />} />
+        <Route path={Screens.bookPaymentView} element={<ProtectedRoute element={<BookPaymentView />} />} />
+        <Route path={Screens.bookPaymentDetail} element={<ProtectedRoute element={<BookPaymentDetail />} />} />
+        <Route path={Screens.bookOrderCancel} element={<ProtectedRoute element={<BookOrderCancel />} />} />
+        <Route path={Screens.accountHome} element={<ProtectedRoute element={<AccountHome />} />} />
+        <Route path={Screens.accountEdit} element={<ProtectedRoute element={<AccountEdit />} />} />
+        <Route path={Screens.accountrefer} element={<ProtectedRoute element={<AccountReferHelp />} />} />
+        <Route path={Screens.accountLanguage} element={<ProtectedRoute element={<AccountLanguage />} />} />
+        <Route path={Screens.accountWallet} element={<ProtectedRoute element={<AccountWallet />} />} />
+        <Route path={Screens.accountRatingReviews} element={<ProtectedRoute element={<AccountWRatingReviews />} />} />
+        <Route path={Screens.accountBank} element={<ProtectedRoute element={<AccountBank />} />} />
+        <Route path={Screens.newBank} element={<ProtectedRoute element={<NewBank />} />} />
+        <Route path={Screens.accountBankRemove} element={<ProtectedRoute element={<AccountRemoveBank />} />} />
+        <Route path={Screens.accountCoupans} element={<ProtectedRoute element={<AccountCoupans />} />} />
+        <Route path={Screens.aboutUs} element={<ProtectedRoute element={<AboutUs />} />} />
+        <Route path={Screens.termsOfUse} element={<ProtectedRoute element={<TermsOfUse />} />} />
+        <Route path={Screens.privacyPolicy} element={<ProtectedRoute element={<Privacy />} />} />
+        <Route path={Screens.cancelRefund} element={<ProtectedRoute element={<CancellationRefund />} />} />
+        <Route path={Screens.contactUs} element={<ProtectedRoute element={<ContactUs />} />} />
+        <Route path={Screens.faqs} element={<ProtectedRoute element={<Faqs />} />} />
+        <Route path={Screens.career} element={<ProtectedRoute element={<Careers />} />} />
+        <Route path={Screens.blogs} element={<ProtectedRoute element={<Blogs />} />} />
+        <Route path={Screens.blogDetail} element={<ProtectedRoute element={<BlogDetail />} />} />
       </Routes>
     </>
   );

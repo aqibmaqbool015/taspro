@@ -711,3 +711,21 @@ h6.user-form-label-heading {
     border-radius: 18px;
     border: none;
 }
+
+.quantity-input-custom {
+  border: 2px solid #FFD700; /* Yellow border */
+  border-radius: 4px;
+  height: 38px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-weight: 500;
+}
+
+.quantity-btn-custom {
+  background: transparent;
+  border: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -5,21 +5,23 @@ import Images from "../constant/images";
 import FrequentlyMapCarousel from "./FrequentlyMapCarousel";
 
 
-const items = [
-    <FrequentlyMapCarousel image={Images.Work2} title='Ac Repair (Split / Window)' value= "₹550" book="add" />,
-    <FrequentlyMapCarousel image={Images.Work3} title='Deep Clean AC (Window)' value= "₹550" book="add"  />,
-    <FrequentlyMapCarousel image={Images.Work4} title='Ac Repair (Split / Window)' value= "₹550" book="add"  />,
-    <FrequentlyMapCarousel image={Images.Work2} title='Ac Repair (Split / Window)' value= "₹550" book="add"  />,
-    <FrequentlyMapCarousel image={Images.Work3} title='Ac Repair (Split / Window)' value= "₹550" book="add"  />,
-];
-
-export const FrequentlyCarousel = () => {
+export const FrequentlyCarousel = ({ additionalServices, mainServiceId }) => {
   const responsive = {
     0: { items: 1 },
     768: { items: 2 },
     1024: { items: 3 },
   };
-
+  const items = additionalServices?.map((service) => (
+    <FrequentlyMapCarousel
+      key={service.id}
+      image={service.icon}
+      title={service.name}
+      value={`₹${service.price - (service.priceDiscount || 0)}`}
+      book="add"
+      mainServiceId={mainServiceId}  // pass this logic
+      service={service}
+    />
+  ));
   return (
     <>
       <AliceCarousel mouseTracking items={items} responsive={responsive} />

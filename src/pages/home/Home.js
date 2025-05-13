@@ -5,12 +5,12 @@ import FooterComponent from "../../component/footer";
 import { useLocation } from "react-router-dom";
 
 function Home() {
-    const location = useLocation()
-  const { data } = location?.state || {}
-  console.log('data', data);
+  const location = useLocation()
+  const { userData } = location?.state || {}
+  console.log('data', userData);
   return (
     <>
-      <NavbarComponent data={data} />
+      <NavbarComponent data={userData} />
       <HomeScreen />
       <FooterComponent />
     </>

@@ -1,6 +1,6 @@
 export const Screens = {
     Home: "/home",
-    service: '/service',
+    service: '/service/:id',
     rateCard: '/rate-card',
     serviceCart: '/service-cart',
     cartPage: '/cart-page',

@@ -2,34 +2,22 @@ import Button from "react-bootstrap/Button";
 import { Container, Form, Modal } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { Screens } from "../../constant/routes";
 import Images from "../../constant/images";
 import InputGroupComponent from "../../commonComponents/InputGroup";
 import { useEffect, useRef, useState } from "react";
-import PhoneInput from "react-phone-input-2";
-import { otpCode } from "../../constant/dummyData";
 import axios from "axios";
+import { useUser } from "../../contextApi/UserContext";
 
-function NavbarComponent({data}) {
+function NavbarComponent({ userData }) {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [showOtp, setShowOtp] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const loc = useLocation()
-  const { dataa } = loc.state || {}
-  const [allData, setAllData] = useState(dataa || data)
-  const handleCloseOtp = () => setShowOtp(false);
-  const handleShowOtp = () => setShowOtp(true);
+  const { user, loading } = useUser();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const otpInputs = useRef([]);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+
   const [seconds, setSeconds] = useState(60);
-  const [selectedDate, setSelectedDate] = useState(null);
-console.log('data', allData);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,66 +35,45 @@ console.log('data', allData);
   }, []);
 
   const handleLogout = async () => {
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (!token) {
-    console.warn("No token found, redirecting to home...");
-    navigate(Screens.authLogin);
-    return;
-  }
+    if (!token) {
+      console.warn("No token found, redirecting to home...");
+      navigate(Screens.authLogin);
+      return;
+    }
 
-  try {
-    await axios.post(
-      `${process.env.REACT_APP_BASE_URI}/api/v1/auth/logout`,
-      {
-        deviceId: process.env.REACT_APP_deviceId, // Ensure correct deviceId
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Attach token in headers
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_BASE_URI}/api/v1/auth/logout`,
+        {
+          deviceId: process.env.REACT_APP_deviceId, // Ensure correct deviceId
         },
-      }
-    );
-    localStorage.removeItem("token");
-    localStorage.clear();
-    setToken("");
-
-    navigate(Screens.authLogin);
-  } catch (error) {
-    console.error("Logout failed:", error);
-
-    // If already logged out or token invalid, clear session & redirect
-    if (error.response?.status === 401) {
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token in headers
+          },
+        }
+      );
       localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       localStorage.clear();
       setToken("");
-      navigate(Screens.Home);
-    } else {
-      alert("Logout failed. Please try again.");
+
+      navigate(Screens.authLogin);
+    } catch (error) {
+      console.error("Logout failed:", error);
+
+      // If already logged out or token invalid, clear session & redirect
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.clear();
+        setToken("");
+        navigate(Screens.Home);
+      } else {
+        alert("Logout failed. Please try again.");
+      }
     }
-  }
-};
-
-
-  
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const remainingSeconds = time % 60;
-    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
-  };
-  const handleInputChange = (index, value) => {
-    if (value.length === 1 && index < otpInputs.current.length - 1) {
-      otpInputs.current[index + 1].focus();
-    }
-  };
-  const handleClicks = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  const [value, setValue] = useState("");
-
-  const handleInputChanges = (e) => {
-    let inputValue = e.target.value.replace(/[^a-zA-Z\s]/g, "");
-    setValue(inputValue);
   };
 
   useEffect(() => {
@@ -119,7 +86,7 @@ console.log('data', allData);
         <Navbar.Brand>
           <span
             className="user-navbar-logo"
-            onClick={() => navigate(Screens.Home, { state: { dataa: data } })}
+            onClick={() => navigate(Screens.Home)}
           >
             <img src={Images.Logo} alt="Logo" />
           </span>
@@ -138,7 +105,7 @@ console.log('data', allData);
             className="contact-phone-text
           contact-phone-text-view-hide"
           >
-            {allData?.user?.phoneNumber || allData?.updatedUser?.phoneNumber}
+            {user?.phoneNumber || userData?.user?.phoneNumber}
           </p>
         </div>
         <div
@@ -166,11 +133,11 @@ console.log('data', allData);
             >
               {token ? "Logout" : "Login"}
             </Button>
-      
+
             <span className="user-location-label-account">
               <img
-                src={allData?.user?.avatar || allData?.updatedUser?.avatar}
-                className="img-fluid-label-content"
+                src={user?.avatar || userData?.user?.avatar}
+                className="img-fluid-label-content rounded-circle"
                 alt="User"
               />
             </span>

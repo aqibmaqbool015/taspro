@@ -2,7 +2,7 @@ import { Modal } from "react-bootstrap";
 import AdminImages from "./adminImages";
 import Images from "./images";
 import { Screens } from "./routes";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -740,7 +740,7 @@ export const amountSummaryDetail = [
     listingClass: "display-view-web-cart mt-2",
     classMain: "mt-2 user-account-time-container",
   },
-   {
+  {
     title: "Advance Paid Amount",
     value: "₹120",
     class: "amount-detail-content-figure amount-light",
@@ -852,22 +852,22 @@ export const checkInterest = [
     name: "Credit Card / Debit Card",
     image: AdminImages.CreditAccount1,
   },
-  {
-    name: "Google Pay",
-    image: AdminImages.CreditAccount2,
-  },
-  {
-    name: "Apple Pay",
-    image: AdminImages.CreditAccount3,
-  },
+  // {
+  //   name: "Google Pay",
+  //   image: AdminImages.CreditAccount2,
+  // },
+  // {
+  //   name: "Apple Pay",
+  //   image: AdminImages.CreditAccount3,
+  // },
   {
     name: "Paypal",
     image: AdminImages.CreditAccount4,
   },
-  {
-    name: "Cash on Delivery",
-    image: AdminImages.CreditAccount5,
-  },
+  // {
+  //   name: "Cash on Delivery",
+  //   image: AdminImages.CreditAccount5,
+  // },
 ];
 
 export const otpCode = [
@@ -1237,7 +1237,7 @@ export const amcScheduleRow = [
     img: (
       <img src={Images.ShowIcon} className="img-fluid-content-detail-item" />
     ),
-    navigateTo: Screens.bookPaymentView, 
+    navigateTo: Screens.bookPaymentView,
   },
   {
     text1: "Upcoming",
@@ -1248,7 +1248,7 @@ export const amcScheduleRow = [
     img: (
       <img src={Images.EditShow} className="img-fluid-content-detail-item" />
     ),
-    navigateTo: Screens.bookPaymentDetail, 
+    navigateTo: Screens.bookPaymentDetail,
   },
   {
     text1: "Pending",

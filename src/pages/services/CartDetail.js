@@ -3,6 +3,9 @@ import NavbarComponent from "../../component/navbar";
 import FooterComponent from "../../component/footer";
 import CartDetailComponent from "../../screens/serviceScreen/cartDetail";
 
+
+
+
 function ServiceCartDetail() {
   return (
     <>

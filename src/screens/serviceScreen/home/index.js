@@ -179,11 +179,11 @@ function HomeScreen() {
                       return (
                         <>
                           <div className="handyman-services-column">
-                          <div className="user-services-bg-admin">
-                            <img
-                              src={item.image}
-                              className="img-fluid-handyman"
-                            />
+                            <div className="user-services-bg-admin">
+                              <img
+                                src={item.image}
+                                className="img-fluid-handyman"
+                              />
                             </div>
                             <div className="text-center">
                               <p className="handyman-title text-center">
@@ -195,30 +195,7 @@ function HomeScreen() {
                       );
                     })}
                   </div>
-                  {/* {handymanContent.map((item, index) => {
-                    return (
-                      <>
-                        <Col
-                          lg={{ span: 2 }}
-                          md={{ span: 3 }}
-                          sm={{ span: 6 }}
-                          xs={{ span: 6 }}
-                        >
-                          <div className="handyman-services-column">
-                            <img
-                              src={item.image}
-                              className="img-fluid-handyman"
-                            />
-                            <div className="text-center">
-                              <p className="handyman-title text-center">
-                                {item.text}
-                              </p>
-                            </div>
-                          </div>
-                        </Col>
-                      </>
-                    );
-                  })} */}
+
                 </div>
               </Col>
             </Row>

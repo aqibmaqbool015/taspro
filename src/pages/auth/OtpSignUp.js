@@ -40,17 +40,14 @@ function OtpSignUp() {
   };
 
   const handleInputChange = (index, value) => {
-    // Prevent entering more than one character
     if (value.length > 1) return;
 
-    // Update the OTP array
     setOtp((prevOtp) => {
       const updatedOtp = [...prevOtp];
       updatedOtp[index] = value;
       return updatedOtp;
     });
 
-    // If current input is filled, move to the next input field
     if (value && index < otpInputs.current.length - 1) {
       otpInputs.current[index + 1].focus();
     }
@@ -68,11 +65,13 @@ function OtpSignUp() {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/verifyOTP`, {
         otp: otpString,
         email: email,
-         deviceId: process.env.REACT_APP_deviceId,
-        fcmToken:process.env.REACT_APP_fcmToken
+        deviceId: process.env.REACT_APP_deviceId,
+        fcmToken: process.env.REACT_APP_fcmToken
       });
       localStorage.setItem("token", response.data?.token);
-        navigate(Screens.profileBuilding, { state: { user :  response?.data?.data } });
+      localStorage.setItem("userId", response.data?.data?.user?._id);
+
+      navigate(Screens.profileBuilding, { state: { userData: response?.data?.data } });
 
     } catch (err) {
       setError("An error occurred while verifying OTP. Please try again.");
@@ -82,14 +81,14 @@ function OtpSignUp() {
   const handleResendOtp = async () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/resendOTP`, {
-        email: email,  
-        phoneNumber :phone
+        email: email,
+        phoneNumber: phone
       });
 
       if (response.status === 200) {
-        setSeconds(60); 
-        setIsResendEnabled(false); 
-        setError(""); 
+        setSeconds(60);
+        setIsResendEnabled(false);
+        setError("");
         setOtp(new Array(4).fill(""));
       } else {
         setError(response.data.message || "Failed to resend OTP. Please try again.");

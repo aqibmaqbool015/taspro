@@ -2,25 +2,77 @@ import React, { useEffect, useState, useRef } from "react";
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
 import Images from "../../../constant/images";
 import {
-  amountSummary,
   navigateAmount,
   otpCode,
 } from "../../../constant/dummyData";
 import "../../screens.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Screens } from "../../../constant/routes";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useQuery } from "@tanstack/react-query";
+import { fetchOrderById } from "../../../services/api";
+import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
+
+
+
 function CartDetailComponent() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const otpInputs = useRef([]);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const stripe = useStripe();
+  const elements = useElements();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [processing, setProcessing] = useState(false);
 
+  const handleStripePayment = async () => {
+    if (!stripe || !elements || !order?.totalAmount) return;
+
+    if (!value.trim()) {
+      setErrorMessage("Please enter cardholder name.");
+      return;
+    }
+    setProcessing(true);
+    setErrorMessage('');
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BASE_URI}/api/v1/payment/create-payment-intent`,
+        {
+          totalAmount: order.totalAmount,
+          orderId: order._id,  // Send orderId to backend
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+      const clientSecret = data.clientSecret;
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardNumberElement),
+          billing_details: {
+            name: value,
+          },
+        },
+      });
+
+      if (result.error) {
+        setErrorMessage(result.error.message);
+      } else if (result.paymentIntent.status === "succeeded") {
+        navigate(Screens.orderConfirm);
+      }
+    } catch (error) {
+      setErrorMessage("Payment failed. Please try again.");
+      console.error(error);
+    } finally {
+      setProcessing(false);
+    }
+  };
+  const handleClose = () => setShow(false);
   const [seconds, setSeconds] = useState(60);
-  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,14 +99,107 @@ function CartDetailComponent() {
       otpInputs.current[index + 1].focus();
     }
   };
+
+  const [value, setValue] = useState('');
+
+
+  const { id } = useParams();
   const handleClicks = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  const [value, setValue] = useState('');
 
-  const handleInputChanges = (e) => {
-    let inputValue = e.target.value.replace(/[^a-zA-Z\s]/g, '');
-    setValue(inputValue);
+  const { data: order, isLoading, error } = useQuery({
+    queryKey: ["order", id],
+    queryFn: () => fetchOrderById(id),
+    enabled: !!id,
+  });
+
+  const total = order?.totalAmount - order?.visitCharges + order?.totalDiscount;
+  const amountSummary = [
+    {
+      title: "Price (Services Price)",
+      value: `₹ ${total} `,
+      class: "amount-detail-content-figure",
+      class2: "amount-exact-point-value",
+      listingClass: "display-view-web-cart mt-2",
+      classMain: "mt-2 user-account-time-container ",
+    },
+    {
+      title: "Offer Discount",
+      value: `₹ ${order?.totalDiscount} `,
+      class: "amount-detail-content-figure amount-light",
+      class2: "amount-exact-point-value amount-light",
+      listingClass: "display-view-web-cart mt-2",
+      classMain: "mt-2 user-account-time-container ",
+    },
+    // {
+    //   title: "Coupon Discount",
+    //   value: "₹700",
+    //   class: "amount-detail-content-figure amount-success",
+    //   class2: "amount-exact-point-value amount-success",
+    //   listingClass: "display-view-web-cart mt-2",
+    //   classMain: "mt-2 user-account-time-container ",
+    // },
+    {
+      title: "Visit Charge",
+      value: `₹ ${order?.visitCharges} `,
+      class: "amount-detail-content-figure amount-light",
+      class2: "amount-exact-point-value amount-light",
+      listingClass: "display-view-web-cart mt-2",
+      classMain: "mt-2 user-account-time-container border-bottom-container",
+    },
+    {
+      title: "Total Amount",
+      value: `₹ ${order?.totalAmount} `,
+      class: "amount-detail-content-figure",
+      class2: "amount-exact-point-value",
+      listingClass:
+        "display-view-web-cart mt-2 amount-listing-seperate-grid-total",
+      classMain: "mt-2 user-account-time-container ",
+    },
+    {
+      title: "Payment Status",
+      value: `${order?.status}`,
+      class: "amount-detail-content-figure",
+      class2: "amount-exact-point-value",
+      listingClass:
+        "display-view-web-cart display-view-web-cart-payment-mode mt-2",
+      classMain: "mt-2 user-account-time-container ",
+    },
+    {
+      title: "Mod of Payment",
+      value: `${order?.modeOfPayment}`,
+      class: "amount-detail-content-figure",
+      class2: "amount-exact-point-value",
+      listingClass:
+        "display-view-web-cart display-view-web-cart-payment-mode mt-2",
+      classMain: "mt-2 user-account-time-container  ",
+    },
+    {
+      title: `You will save ₹ ${order?.totalDiscount}  on this order`,
+      class: "amount-detail-content-figure amount-success",
+      class2: "amount-exact-point-value amount-success",
+      listingClass: "display-view-web-cart mt-2",
+      classMain:
+        "mt-2 user-account-time-container  border-bottom-none",
+    },
+  ];
+  const CARD_ELEMENT_OPTIONS = {
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#424770',
+        letterSpacing: '0.025em',
+        fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+      },
+      invalid: {
+        color: '#c23d4b',
+      },
+    },
+    hidePostalCode: true,
   };
 
   return (
@@ -73,90 +218,44 @@ function CartDetailComponent() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore
                 </p>
-                <div className="mt-4 box-cart-container position-relative">
-                  <Form className="mt-1 mb-1">
-                    <Form.Group className="mb-2" controlId="formBasicEmail">
-                      <Form.Label className="form-control-label">
-                        Card Name
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Andrew Ainsley"
-                        className="form-control-text-input"
-                        value={value}
-                        onChange={handleInputChanges}
-                      />
+                <Form.Group className="mb-3" controlId="cardHolderName">
+                  <Form.Label className="form-control-label">Cardholder Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter cardholder name"
+                    value={value}
+                    onChange={(e) =>
+                      setValue(e.target.value.replace(/[^a-zA-Z\s]/g, ""))
+                    }
+                    className="form-control-text-input"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-2" controlId="formBasicCard">
+                  <div className="stripe-card-element">
+                    <Form.Group className="mb-2" controlId="formCardNumber">
+                      <Form.Label className="form-control-label">Card Number</Form.Label>
+                      <div className="stripe-card-element">
+                        <CardNumberElement options={CARD_ELEMENT_OPTIONS} />
+                      </div>
                     </Form.Group>
-
-                    <Form.Group className="mb-2" controlId="formBasicPassword">
-                      <Form.Label className="form-control-label">
-                        Card Number
-                      </Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="2672 4738 7837 7285"
-                        className="form-control-text-input"
-                      />
-                    </Form.Group>
-                    <Row className="">
-                      <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                        <Form.Group
-                          className="mb-2 position-relative"
-                          controlId="formGridEmail"
-                        >
-                          {/* <Form.Label className="form-control-label">
-                            Expiry Date
-                          </Form.Label>
-                          <Form.Control
-                            type="date"
-                            placeholder="09/07/26"
-                            className="form-control-text-input"
-                          /> */}
-                          <Form.Label className="form-control-label">
-                            Expiry Date
-                          </Form.Label>
-                          <DatePicker
-                            selected={selectedDate}
-                            onChange={(date) => setSelectedDate(date)}
-                            dateFormat="dd/MM/yyyy"
-                            className="form-control-text-input"
-                            placeholderText="Select Date"
-                          />
-                          <img
-                            src={Images.CalendarBlue}
-                            className="img-fluid-view-effect"
-                          />
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group controlId="formCardExpiry">
+                          <Form.Label className="form-control-label">Expiry</Form.Label>
+                          <CardExpiryElement options={CARD_ELEMENT_OPTIONS} />
                         </Form.Group>
                       </Col>
-                      <Col lg={{ span: 6 }} md={{ span: 12 }}>
-                        <Form.Group
-                          className="mb-2 position-relative"
-                          controlId="formGridPassword"
-                        >
-                          <Form.Label className="form-control-label">
-                            CVV
-                          </Form.Label>
-                          <input
-                            type="number"
-                            placeholder="699"
-                            min="100"
-                            max="999"
-                            onInput={(e) => {
-                              if (e.target.value.length > 3) {
-                                e.target.value = e.target.value.slice(0, 3);
-                              }
-                            }}
-                            className="form-control-text-input"
-                          />
-                          {/*  */}
+                      <Col md={6}>
+                        <Form.Group controlId="formCardCvc">
+                          <Form.Label className="form-control-label">CVC</Form.Label>
+                          <CardCvcElement options={CARD_ELEMENT_OPTIONS} />
                         </Form.Group>
                       </Col>
                     </Row>
-                  </Form>
-                </div>
+                  </div>
+                </Form.Group>
               </div>
             </Col>
-
             <Col lg={{ span: 5 }} md={{ span: 5 }} sm={{ span: 12 }}>
               <div className="mt-4 box-cart-container position-relative">
                 <h5
@@ -165,7 +264,7 @@ function CartDetailComponent() {
                 >
                   amount summary
                 </h5>
-                {amountSummary.map((item, index) => {
+                {amountSummary?.map((item, index) => {
                   return (
                     <>
                       <div className={item.listingClass}>
@@ -177,13 +276,15 @@ function CartDetailComponent() {
                 })}
                 <div className="text-center mt-3">
                   <Button
-                    className=" btn-primary-fill-book
-                    btn-primary-fill-book-rounded
-                    btn-primary-fill-book-border-response"
-                    onClick={handleShow}
+                    className="btn-primary-fill-book btn-primary-fill-book-rounded btn-primary-fill-book-border-response"
+                    onClick={handleStripePayment}
+                    disabled={!stripe || processing}
                   >
-                    Pay ₹1200
+                    {processing ? "Processing..." : `Pay ₹ ${order?.totalAmount}`}
                   </Button>
+
+                  {errorMessage && <p className="text-danger mt-2">{errorMessage}</p>}
+
                 </div>
                 <ul className="px-0 mt-2 mb-0 user-content-align-debit">
                   {navigateAmount.map((item, index) => {

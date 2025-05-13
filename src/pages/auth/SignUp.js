@@ -4,7 +4,7 @@ import "../../auth.css";
 import Images from "../../constant/images";
 import { useNavigate } from "react-router-dom";
 import { Screens } from "../../constant/routes";
-import axios from "axios"; 
+import axios from "axios";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!phoneNumber || !email) {
       setError("Please fill in both phone number and email");
@@ -32,17 +32,19 @@ function SignUp() {
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URI}/api/v1/auth/signup`, userData);
-        console.log('response', response?.data);
-        navigate(Screens.otpSignup, {
-          state: { userData: response.data.data,email: email , phone: phoneNumber },
-        });
-      
+      console.log('response', response?.data);
+      navigate(Screens.otpSignup, {
+        state: { userData: response.data.data, email: email, phone: phoneNumber },
+      });
+
     } catch (err) {
-      setError("An error occurred. Please try again later.");
+      setError(err?.response?.data?.message);
     } finally {
       setLoading(false);
     }
   };
+  console.log("error", error);
+
   return (
     <>
       <section className="user-content-auth-section text-center">
@@ -121,7 +123,7 @@ function SignUp() {
                           Sign In
                         </span>
                       </p>
-                    </Form> 
+                    </Form>
                   </div>
                 </div>
                 <div className="content-form-right-side">

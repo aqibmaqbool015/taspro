@@ -5,20 +5,21 @@ import Images from "../constant/images";
 import SplitComponent from "./SplitComponent";
 
 
-const items = [
-  <SplitComponent image={Images.SplitAc} text="Split AC" />,
-  <SplitComponent image={Images.SplitAc} text="Window AC" />,
-  <SplitComponent image={Images.SplitAc} text="Cassette AC" />,
-  <SplitComponent image={Images.SplitAc} text="Split AC" />,
-];
 
-export const SplitAc = () => {
+
+
+export const SplitAc = ({ data }) => {
   const responsive = {
     0: { items: 3 },
     768: { items: 3 },
     1024: { items: 3 },
     1200: { items: 3 },
   };
+
+  const items = data?.map((d, i) => (
+    <SplitComponent key={i} image={d.icon} text={d.name} />
+  ));
+
 
   return (
     <>

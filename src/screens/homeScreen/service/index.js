@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Accordion, Modal } from "react-bootstrap";
 import Images from "../../../constant/images";
 import {
@@ -13,7 +13,7 @@ import {
 import CarouselBanner from "../../../commonComponents/CarouselBanner";
 import { CleaningCarousel } from "../../../commonComponents/CleaningCarousel";
 import ApplicancesModal from "../../../commonComponents/AppliancesModal";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SplitAc } from "../../../commonComponents/SplitAc";
 import { CustomerProfile } from "../../../commonComponents/CustomerProfile";
 import { AcBrands } from "../../../commonComponents/AcBrands";
@@ -24,6 +24,11 @@ import AddressUpdateDropdown from "../../../commonComponents/AddressUpdateDropdo
 import DeepServiceModal from "../../../commonComponents/DeepServiceModal";
 import AllReviewsModal from "../../../commonComponents/Models/AllReviewsModal";
 import TermsModal from "../../../commonComponents/Models/TermsModal";
+import { useQuery } from "@tanstack/react-query";
+import { fetchServicesBySubcategory } from "../../../services/api";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, changeQuantity, clearMessage, removeFromCart, removeSubservice } from "../../../src/store/cartSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 function ServiceScreen() {
   const navigate = useNavigate();
@@ -38,11 +43,48 @@ function ServiceScreen() {
   const handleCloseAll = () => setShowAll(false);
   const handleShowAll = () => setShowAll(true);
   const [showAllMore, setShowAllMore] = useState(false);
+  const [showAllMoreData, setShowAllMoreData] = useState(null);
   const handleCloseAllMore = () => setShowAllMore(false);
-  const handleShowAllMore = () => setShowAllMore(true);
+  const handleShowAllMore = (item) => {
+    setShowAllMore(true)
+    setShowAllMoreData(item);
+    console.log('showAllMore:', item);
+  };
   const handleClicks = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const { id } = useParams();
+  const location = useLocation();
+
+  const subcategory = location.state?.subcategory;
+  const dispatch = useDispatch();
+  const {
+    data: services = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['services', subcategory],
+    queryFn: () => fetchServicesBySubcategory(subcategory?._id),
+    enabled: !!subcategory,
+  });
+  const { items, totalAmount, totalDiscount, lastActionMessage } = useSelector((state) => state.cart);
+  console.log('items', services);
+  useEffect(() => {
+    if (lastActionMessage) {
+      showToast(lastActionMessage);
+      dispatch(clearMessage());
+    }
+  }, [lastActionMessage]);
+  if (isLoading) return <p>Loading services...</p>;
+  if (isError) return <p>Error: {error.message}</p>;
+
+  const showToast = (message) => {
+    toast(message);
+  };
+
+
 
   return (
     <>
@@ -53,9 +95,10 @@ function ServiceScreen() {
       >
         <Container>
           <h5 className="user-provider-dummy ">
-            <span onClick={() => navigate("")}>Home </span>
-            <span onClick={() => navigate("")}>/ AC & Appliance Repair </span>
-            <span onClick={() => navigate("")}>/ AC Repair</span>
+            <span onClick={() => navigate("/home")}>Home/ </span>
+            <span onClick={() => window.location.reload()}>{subcategory?.name} </span>
+            {/* <span onClick={() => navigate(`/service/${id}`)}>{subcategory?.name} </span> */}
+            {/* <span onClick={() => navigate("")}>/ AC Repair</span> */}
           </h5>
         </Container>
       </section>
@@ -70,7 +113,7 @@ function ServiceScreen() {
             <Col lg={{ span: 5 }}>
               <div className="home-banner-left-content">
                 <h4 className="heading-title-banner-fixed">
-                  Best Air Condition (AC) Repair Service in Raiour
+                  Best {subcategory?.name} Service in Raiour
                 </h4>
                 <p className="choose-us-description">
                   <span className="choose-us-star-data">
@@ -173,28 +216,6 @@ function ServiceScreen() {
                       <img src={Images.ArrowRight} className="img-fluid" />
                     </div>
                   </div>
-                  {/* {cartWarranty.map((item, index) => {
-                    return (
-                      <>
-                        <div
-                          className="box-cart-content-container"
-                          onClick={() => navigate(item.link)}
-                        >
-                          <div className="cart-box-left">
-                            <span className="choose-us-star-data">
-                              <img src={item.image} className="img-fluid " />
-                            </span>
-                            <span className="choose-us-star-warranty">
-                              {item.text}
-                            </span>
-                          </div>
-                          <div className="cart-box-right">
-                            <img src={item.arrow} className="img-fluid" />
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })} */}
                 </div>
               </div>
             </Col>
@@ -208,6 +229,7 @@ function ServiceScreen() {
             </Col>
           </Row>
           <Row>
+            <ToastContainer />
             <Col lg={{ span: 7 }}>
               <div className="user-services-content-fixed-height">
                 <div
@@ -216,9 +238,9 @@ function ServiceScreen() {
               user-multi-services-split-gap-updated"
                   onClick={handleClick}
                 >
-                  <SplitAc />
+                  <SplitAc data={subcategory?.services} />
                 </div>
-                {splitAcProfile.map((item, index) => {
+                {services?.map((item, index) => {
                   return (
                     <>
                       <div className=" split-ac-service-box-container mb-3">
@@ -240,51 +262,54 @@ function ServiceScreen() {
                                 className="split-ac-label-service"
                                 style={{ position: "relative", zIndex: "-1" }}
                               >
-                                <img src={item.image} className="img-fluid" />
+                                <img src={item.icon} className="img-fluid" />
                               </span>
                               <Button
                                 className=" btn-primary-fill-book-border
-                              btn-primary-fill-book
-                              btn-primary-fill-book-fixed
-                              btn-primary-fill-book-fixed-overlay"
-                                onClick={() => navigate(Screens.serviceCart)}
+                                btn-primary-fill-book
+                                btn-primary-fill-book-fixed
+                                btn-primary-fill-book-fixed-overlay"
+                                onClick={() =>
+                                  dispatch(addToCart({
+                                    id: item._id,
+                                    name: item.name,
+                                    price: item.price,
+                                    amount2: item.previousPrice || 0,
+                                    icon: item.icon,
+                                    visitCharges: item.visitCharges || 0,
+                                  }))
+                                }
                               >
                                 <span className="card-label-text-btn">
-                                  {item.button}
+                                  Add
                                 </span>
                               </Button>
-                              {/* <Button
-                              className=" btn-primary-fill-book"
-                              onClick={() => navigate(Screens.serviceCart)}
-                            >
-                              {item.button}
-                            </Button> */}
                             </div>
                             <div className="split-ac-username">
                               <span className="user-date-warranty">
-                                {item.warranty}
+                                {item?.warranty} {item.warrantyUnit} Warranty
                               </span>
                               <h6
                                 className="user-power-title
                             user-power-title-fixings"
                                 style={{ marginTop: "0px" }}
                               >
-                                {item.heading}
+                                {item.name}
                               </h6>
                               <p
                                 className="user-content-card-text
                             user-content-card-text-view mb-2"
                               >
                                 <span className="user-content-star-rate">
-                                  <img src={item.star} className="img-fluid" />
+                                  <img src={Images.Star} className="img-fluid" />
                                 </span>
                                 {item.rate}
                               </p>
                               <p className="user-content-time-estimate mb-3">
                                 <span className="user-content-star-rate">
-                                  <img src={item.time} className="img-fluid" />
+                                  <img src={Images.Time} className="img-fluid" />
                                 </span>
-                                {item.estimation}
+                                {item.time} {item?.timeUnit}
                               </p>
                             </div>
                           </div>
@@ -293,7 +318,7 @@ function ServiceScreen() {
                         split-ac-flex-right-fixings"
                           >
                             <h6 className="split-ac-title-small">
-                              {item.amount1}{" "}
+                              ₹ {item.price}{" "}
                               <span className="font-weight-normal">
                                 <s>{item.amount2}</s>
                               </span>
@@ -302,14 +327,14 @@ function ServiceScreen() {
                           </div>
                         </div>
                         <ul className="px-3 mt-4 user-title-content-main-responsive">
-                          <li className="user-split-paragraph">{item.text1}</li>
-                          <li className="user-split-paragraph">{item.text2}</li>
+                          <li className="user-split-paragraph">{item.description}</li>
+                          {/* <li className="user-split-paragraph">{item.text2}</li> */}
                         </ul>
                         <h6
-                          className="user-details-more-split"
-                          onClick={handleShowAllMore}
+                          className="user-details-more-split "
+                          onClick={() => handleShowAllMore(item)}
                         >
-                          {item.detail}
+                          More Details
                         </h6>
                       </div>
                     </>
@@ -318,52 +343,183 @@ function ServiceScreen() {
               </div>
             </Col>
             <Col lg={{ span: 5 }}>
-              <div
-                className="mt-4 box-cart-container
+              {items?.length === 0 ? (
+                <div
+                  className="mt-4 box-cart-container
                 company-detail-content-empty text-center
                 special-grid-in-view-responsive-empty"
-              >
-                <span className="box-cart-empty-label">
-                  <img src={Images.EmptyIcon} className="img-fluid" />
-                </span>
-                <h5 className="empty-logo-title">Your Cart is empty</h5>
-                <p className="choose-us-description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  iaculis mauris pharetra, tincidunt odio non, sodales libero.
-                  Aliquam a risus vel lectus lobortis ultricies at a enim.
-                </p>
-              </div>
-              <div
-                className="mt-4 box-cart-container
+                >
+                  <span className="box-cart-empty-label">
+                    <img src={Images.EmptyIcon} className="img-fluid" />
+                  </span>
+                  <h5 className="empty-logo-title">Your Cart is empty</h5>
+                  <p className="choose-us-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                    iaculis mauris pharetra, tincidunt odio non, sodales libero.
+                    Aliquam a risus vel lectus lobortis ultricies at a enim.
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="font-weight-bold">Cart</h3>
+                  <hr />
+                  {items?.map((item, index) => (
+                    <div key={item.id}>
+                      {/* Main Service Row */}
+                      <div className="cart-item-box row align-items-center py-3">
+                        <div className="col-3 col-md-2">
+                          <img src={item.icon} alt={item.name} className="img-fluid rounded" style={{ maxWidth: 60 }} />
+                        </div>
+                        <div className="col-9 col-md-4">
+                          <strong>{item.name}</strong>
+                          <p className="mb-1 text-muted">₹{item.price} each</p>
+                        </div>
+                        <div className="col-8 col-md-4 mt-3 mt-md-0">
+                          <div className="position-relative d-inline-block" style={{ width: "110px" }}>
+                            <input
+                              type="number"
+                              min={1}
+                              className="form-control text-center px-4 quantity-input-custom"
+                              value={item.quantity}
+                              onChange={(e) =>
+                                dispatch(
+                                  changeQuantity({
+                                    id: item.id,
+                                    quantity: Math.max(1, +e.target.value),
+                                  })
+                                )
+                              }
+                            />
+                            <button
+                              type="button"
+                              className="position-absolute top-0 start-0 h-100 px-2 quantity-btn-custom"
+                              onClick={() =>
+                                dispatch(
+                                  changeQuantity({
+                                    id: item.id,
+                                    quantity: Math.max(1, item.quantity - 1),
+                                  })
+                                )
+                              }
+                            >
+                              -
+                            </button>
+                            <button
+                              type="button"
+                              className="position-absolute top-0 end-0 h-100 px-2 quantity-btn-custom"
+                              onClick={() =>
+                                dispatch(
+                                  changeQuantity({
+                                    id: item.id,
+                                    quantity: item.quantity + 1,
+                                  })
+                                )
+                              }
+                            >
+                              +
+                            </button>
+                          </div>
+                          <button
+                            className="btn btn-link text-danger p-0 mt-2"
+                            onClick={() => dispatch(removeFromCart(item.id))}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="col-4 col-md-2 text-end mt-3 mt-md-0">
+                          <strong>₹{item.price * item.quantity}</strong>
+                        </div>
+                      </div>
+
+                      {/* Subservices if any */}
+                      {item.subservices?.map((sub) => (
+                        <div
+                          key={sub.id}
+                          className="cart-item-box row align-items-center py-2 ps-5 d-flex"
+                          style={{ backgroundColor: "#f9f9f9" }}
+                        >
+                          <div className="col-3 col-md-2">
+                            <img src={sub.icon} alt={sub.name} className="img-fluid rounded" style={{ maxWidth: 40 }} />
+                          </div>
+                          <div className="col-6 col-md-5">
+                            <strong className="text-muted">{sub.name}</strong>
+                            <p className="mb-1 text-muted">₹{sub.price} × {item.quantity}</p>
+                          </div>
+
+                          <div className="col-12 col-md-4 text-md-end">
+                            <strong>₹{sub.price * item.quantity}</strong>
+                          </div>
+                          <button className="col-3 col-md-1 text-red-600" onClick={() => dispatch(removeSubservice({ parentId: item.id, subserviceName: sub.name }))}>
+                            X
+                          </button>
+                        </div>
+                      ))}
+
+                      {index !== items.length - 1 && <hr />}
+                    </div>
+                  ))}
+
+                  <div
+                    className="mt-4 
                 company-detail-content-empty
-                special-grid-in-view-responsive"
-              >
-                <ul
-                  className="user-cleaning-container
+                "
+                  >
+                    <ul
+                      className="user-cleaning-container
                 user-cleaning-container-carts px-0 mt-2
                 user-cleaning-container-carts-position"
-                >
-                  <li className="user-cleaning-detail">
-                    <h6 className="split-ac-title-small">₹598</h6>
-                    <p
-                      className="user-ammount-bottom-succes
-                    user-ammount-bottom-succes-order"
                     >
-                      You save ₹102 on this order
-                    </p>
-                  </li>
+                      <li className="user-cleaning-detail">
+                        <h6>Total Amount: ₹{totalAmount}</h6>
+                        {totalDiscount > 0 && (
+                          <p className="text-success">You saved ₹{totalDiscount} on this order</p>
+                        )}
+                      </li>
 
-                  <li className="user-cleaning-detail">
-                    <Button
-                      className=" btn-primary-fill-book
+                      <li className="user-cleaning-detail">
+                        <Button
+                          className=" btn-primary-fill-book
                     "
-                      onClick={() => navigate(Screens.cartPage)}
+                          onClick={() => navigate(Screens.cartPage)}
+                        >
+                          View Cart
+                        </Button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div
+                    className="mt-4 box-cart-container
+                company-detail-content-empty
+                special-grid-in-view-responsive"
+                  >
+                    <ul
+                      className="user-cleaning-container
+                user-cleaning-container-carts px-0 mt-2
+                user-cleaning-container-carts-position"
                     >
-                      View Cart
-                    </Button>
-                  </li>
-                </ul>
-              </div>
+                      <li className="user-cleaning-detail">
+                        <h6>Total Amount: ₹{totalAmount}</h6>
+                        {totalDiscount > 0 && (
+                          <p className="text-success">You saved ₹{totalDiscount} on this order</p>
+                        )}
+                      </li>
+
+                      <li className="user-cleaning-detail">
+                        <Button
+                          className=" btn-primary-fill-book
+                    "
+                          onClick={() => navigate(Screens.cartPage)}
+                        >
+                          View Cart
+                        </Button>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              )}
+
               <div
                 className=" box-cart-container
                 company-detail-content-empty"
@@ -451,7 +607,7 @@ function ServiceScreen() {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section >
       <section className="application-packages-section mt-3">
         <Container className="application-customers-review-container">
           <Row>
@@ -604,6 +760,7 @@ function ServiceScreen() {
         onHide={() => setModalShow(false)}
       />
       <DeepServiceModal
+        data={showAllMoreData}
         show={showAllMore}
         handleClose={handleCloseAllMore}
         onHide={() => setShowAllMore(false)}

@@ -15,20 +15,22 @@ function ProfileBuilding() {
   });
   const [avatar, setAvatar] = useState(null);
   const location = useLocation();
-  const { user } = location.state || {};
-  console.log('user', user,avatar);
+  const { userData } = location.state || {};
+  console.log('user', userData, avatar);
   const handleImageChanged = (selectedImage) => {
-  const imageUrl = URL.createObjectURL(selectedImage); // This creates an object URL
+    setAvatar(selectedImage);
+  };
 
-  setAvatar(imageUrl);  // This URL will be used to display the image and can be sent to the backend
-};
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleContinue = () => {
-    navigate(Screens.completeProfile, { state: { formData, user, avatar } });
+    navigate(Screens.completeProfile, { state: { formData, userData, avatar } });
   };
+
+  console.log('formData', formData);
+
 
   return (
     <section className="user-content-auth-section text-center">
@@ -88,7 +90,7 @@ function ProfileBuilding() {
                         type="email"
                         placeholder="Enter your email"
                         name="email"
-                        value={user?.user.email}
+                        value={userData?.user.email}
                         // onChange={handleChange}
                         disabled
                         className="form-control-text-input"

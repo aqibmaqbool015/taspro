@@ -52,7 +52,7 @@ function ServiceScreen() {
     setShowThirdModal(false);
     setShowFourthModal(true);
   };
-  const handleFourthModalContinue = () => {};
+  const handleFourthModalContinue = () => { };
   const [modalShow, setModalShow] = React.useState(false);
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -273,7 +273,7 @@ function ServiceScreen() {
                               btn-primary-fill-book-fixed
                               btn-primary-fill-book-fixed-overlay"
                                 onClick={() => setShowFirstModal(true)}
-                                // onClick={() => navigate(Screens.amcserviceCart)}
+                              // onClick={() => navigate(Screens.amcserviceCart)}
                               >
                                 <span className="card-label-text-btn">
                                   {item.button}
